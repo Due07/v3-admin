@@ -1,0 +1,16 @@
+root = true
+
+[*] # 针对所有文件
+charset = utf-8  # 就是规定了采用哪种字符编码
+indent_style = space
+indent_size = 4
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{js,jsx,ts,tsx,vue}]
+max_line_length = 120
+
+[*.md] # 仅针对 md 文件
+insert_final_newline = false
+trim_trailing_whitespace = false

@@ -1,0 +1,183 @@
+{
+    "root": true,
+    "env": {
+        // "borwer": true, // 启用浏览器全局变量
+        "node": true,
+        "es2021": true,
+        "es6": true
+    },
+    "parser": "vue-eslint-parser",
+    "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true,
+            "legacyDecorators": true // 允许使用装饰器
+        }
+    },
+    // eslint-plugin-vue @typescript-eslint/eslint-plugin eslint-plugin-prettier的缩写
+    "plugins": [
+        "vue",
+        "prettier",
+        "@typescript-eslint"
+    ],
+    "extends": [
+        "plugin:vue/vue3-recommended",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        // eslint-config-prettier 的缩写
+        "prettier",
+        "plugin:prettier/recommended"
+    ],
+    "rules": {
+        "semi": [
+            2,
+            "always"
+        ],
+        "@typescript-eslint/ban-ts-ignore": "off",
+        "@typescript-eslint/no-unused-vars": [2, {"vars": "all"}],
+        "@typescript-eslint/explicit-function-return-type": [
+            "off",
+            {
+                "allowExpressions": true,
+                "allowTypedFunctionExpressions": true
+            }
+        ],
+        "@typescript-eslint/no-explicit-any": "off", // 是否有any
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-use-before-define": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/ban-types": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "prettier/prettier": 0,
+        "max-len": [
+            "error",
+            {
+                "code": 120,
+                "ignoreUrls": true
+            }
+        ],
+        "vue/html-indent": [
+            "error",
+            4,
+            {
+                "attribute": 1,
+                "baseIndent": 1,
+                "closeBracket": 0,
+                "alignAttributesVertically": true,
+                "ignores": []
+            }
+        ],
+        "vue/multi-word-component-names": 0, // 希望组件以组合驼峰式命名
+        "vue/html-self-closing": [0],
+        "vue/multiline-html-element-content-newline": [0],
+        "vue/singleline-html-element-content-newline": [0],
+        "vue/html-closing-bracket-newline": 0,
+        "vue/no-v-html": [0],
+        "vue/max-attributes-per-line": [0],
+        "no-multiple-empty-lines": [1,
+            {
+                "max": 1
+            }
+        ], //空行最多不能超过2行
+        "camelcase": 2, //强制驼峰法命名
+        "use-isnan": 2, //禁止比较时使用NaN，只能用isNaN()
+        "linebreak-style": [
+            0,
+            "error",
+            "windows"
+        ],
+        "no-console": 0, // 是否console
+        "no-debugger": "warn",
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1,
+                "ignoredNodes": [
+                    "TemplateLiteral"
+                ]
+            }
+        ],
+        "no-mixed-spaces-and-tabs": [
+            "error",
+            false
+        ],
+        "func-names": "off",
+        "no-param-reassign": "off",
+        "object-curly-spacing": "off",
+        "arrow-parens": "off",
+        "object-shorthand": "off",
+        "prefer-destructuring": "off",
+        "consistent-return": "off",
+        "comma-dangle": [
+            "error",
+            "always-multiline"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "guard-for-in": "error",
+        "no-var": "error",
+        "no-unused-vars": [2, {"vars": "all"}],
+        "no-unused-expressions": "error",
+        "no-return-assign": "off",
+        "max-classes-per-file": [
+            "error",
+            2
+        ],
+        "class-methods-use-this": "off",
+        "no-continue": "off",
+        "no-mixed-operators": "off",
+        "no-plusplus": "off",
+        "no-await-in-loop": "off",
+        "no-restricted-syntax": "off",
+        "prefer-const": "error",
+        "no-new": "off",
+        "radix": "error",
+        "prefer-template": "error",
+        "no-use-before-define": "off",
+        "no-shadow": "error",
+        "import/extensions": "off",
+        "eqeqeq": "error",
+        "array-callback-return": "error",
+        "vue/no-unused-vars": "error",
+        "import/no-unresolved": "off",
+        "no-extend-native": "off",
+        "global-require": "off",
+        "import/no-dynamic-require": "off",
+        "template-curly-spacing": "off",
+        "@typescript-eslint/indent": [
+            "error",
+            4,
+            {
+                "VariableDeclarator": 4,
+                "SwitchCase": 1
+            }
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+            "error",
+            {
+                "accessibility": "no-public"
+            }
+        ],
+        "@typescript-eslint/interface-name-prefix": 0,
+        "@typescript-eslint/no-parameter-properties": 0,
+        "@typescript-eslint/camelcase": [
+            "off",
+            {
+                "properties": "always"
+            }
+        ]
+    },
+    "globals": {
+        "defineProps": "readonly",
+        "defineEmits": "readonly",
+        "defineExpose": "readonly",
+        "withDefaults": "readonly"
+    }
+}
