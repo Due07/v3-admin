@@ -146,7 +146,7 @@
                                 <template v-if="x.children">
                                     <el-button
                                         v-for="(k, j) in (
-                                            x.children[row[x.connect] as number] as unknown as Record<number, IActions>
+                                            x.children[row[x.connect] as number] as unknown as Record<number, TActions>
                                         )"
                                         :key="j"
                                         :type="handleFun('type', k, [row])"
@@ -175,9 +175,7 @@
 // import { ref, reactive } from 'vue';
 import { handleFun, judgmentType } from '@/scripts/base/methods';
 import type { PropType } from 'vue';
-import type { IList as TList } from '@/types/components/list';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
-import type { IActions } from '@/types/components/list';
+import type { IList as TList, IActions as TActions } from '@/types/components/list';
 
 export default {
     props: {

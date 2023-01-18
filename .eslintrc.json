@@ -39,7 +39,7 @@
             "always"
         ],
         "@typescript-eslint/ban-ts-ignore": "off",
-        "@typescript-eslint/no-unused-vars": [2, {"vars": "all"}],
+        "@typescript-eslint/no-unused-vars": 0,
         "@typescript-eslint/explicit-function-return-type": [
             "off",
             {
@@ -130,7 +130,10 @@
         ],
         "guard-for-in": "error",
         "no-var": "error",
-        "no-unused-vars": [2, {"vars": "all"}],
+        "no-unused-vars": [2, {
+            "vars": "all",
+            "varsIgnorePattern": "[I|T]\\w+" // 约定I or T 定义类型 开头的不做校验
+        }],
         "no-unused-expressions": "error",
         "no-return-assign": "off",
         "max-classes-per-file": [
@@ -152,7 +155,6 @@
         "import/extensions": "off",
         "eqeqeq": "error",
         "array-callback-return": "error",
-        "vue/no-unused-vars": "error",
         "import/no-unresolved": "off",
         "no-extend-native": "off",
         "global-require": "off",
