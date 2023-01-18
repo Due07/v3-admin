@@ -21,7 +21,8 @@
                     :type="i.type === 'expand' ? i.type : ''"
                     :label="i.name"
                     :prop="i.value"
-                    :width="i.width" :align="i.align ?? 'center'"
+                    :width="i.width"
+                    :align="i.align ?? 'center'"
                     v-bind="i.bind"
                 >
                     <template #default="{ row }">
@@ -33,7 +34,8 @@
                     v-if="i.type === 'text'"
                     :label="i.name"
                     :prop="i.value"
-                    :width="i.width" :align="i.align ?? 'center'"
+                    :width="i.width"
+                    :align="i.align ?? 'center'"
                     v-bind="i.bind"
                 >
                 </el-table-column>
@@ -42,7 +44,8 @@
                     v-if="['date', 'datetime'].includes(i.type)"
                     :label="i.name"
                     :prop="i.value"
-                    :width="i.width" :align="i.align ?? 'center'"
+                    :width="i.width"
+                    :align="i.align ?? 'center'"
                     v-bind="i.bind"
                     :formatter="(row: unknown) => (i.formatter ? formatterData(row, i) : i.formatter)"
                 >
@@ -53,7 +56,8 @@
                     v-if=" ['hash', 'boolean'].includes(i.type)"
                     :label="i.name"
                     :prop="i.value"
-                    :width="i.width" :align="i.align ?? 'center'"
+                    :width="i.width"
+                    :align="i.align ?? 'center'"
                     v-bind="i.bind"
                 >
                     <template #default="{ row }">
@@ -68,7 +72,8 @@
                     v-if="i.type === 'tagArray'"
                     :label="i.name"
                     :prop="i.value"
-                    :width="i.width" :align="i.align ?? 'center'"
+                    :width="i.width"
+                    :align="i.align ?? 'center'"
                     v-bind="i.bind"
                 >
                     <template #default="{ row }">
@@ -87,7 +92,8 @@
                     v-if="['avatar', 'image'].includes(i.type)"
                     :label="i.name"
                     :prop="i.value"
-                    :width="i.width" :align="i.align ?? 'center'"
+                    :width="i.width"
+                    :align="i.align ?? 'center'"
                     v-bind="i.bind"
                 >
                     <template #default="{ row }">
@@ -116,7 +122,8 @@
                     v-if="i.type === 'actions'"
                     :label="i.name"
                     :prop="i.value"
-                    :width="i.width" :align="i.align ?? 'center'"
+                    :width="i.width"
+                    :align="i.align ?? 'center'"
                     v-bind="i.bind"
                 >
                     <template v-if="i.actions !== undefined && i.actions.length" #default="{ row }">
