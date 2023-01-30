@@ -7,7 +7,9 @@
         ],
         "declaration": true,
         "target": "esnext",
-        "useDefineForClassFields": true,
+        // "target": "ES2022",
+        "experimentalDecorators": true, // 启用实验性的ES装饰器
+        "useDefineForClassFields": false,
         "module": "esnext",
         "moduleResolution": "node",
         "strict": true,
@@ -15,7 +17,7 @@
         "sourceMap": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
-        "lib": ["esnext", "dom"],
+        "lib": ["esnext", "dom", "ES2015"],
         "baseUrl": "./",
         "paths": {
             "@": ["src"],
@@ -25,7 +27,6 @@
         "noEmit": true, // vue3的一些依赖包,版本过低,导致的错误升级vue版本
         "skipLibCheck": true, // Cannot find module '@babel/types' or its corresponding type declarations.
         "suppressImplicitAnyIndexErrors": true, // 修复无法使用object[key]方式
-        "experimentalDecorators": true, // 启用实验性的ES装饰器
     },
     "include": ["src/**/*.ts", "src/**/*.d.ts","src/**/*.tsx", "src/**/*.vue"],
     "exclude": ["node_modules"]

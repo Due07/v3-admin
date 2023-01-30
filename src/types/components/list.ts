@@ -13,6 +13,7 @@ export interface IList {
     type: 'expand' | 'text' | 'boolean' | 'hash' | 'tagArray'
     | 'date' | 'datetime' | 'image' | 'avatar' | 'slot' | 'actions',
     value: string;
+
     align?: 'left' | 'center' | 'right';
     size?: number;
     tagSize?: '' | 'large' | 'small',

@@ -3,16 +3,13 @@
         <template #header>
             <div class="flex justify-between">
                 <div class="title">
-                    {{ title || '' }}
+                    {{ title || "" }}
                     <slot name="headerTitle"></slot>
                 </div>
                 <slot></slot>
             </div>
         </template>
-        <el-table
-            :data="tableData"
-            v-bind="$attrs"
-        >
+        <el-table :data="tableData" v-bind="$attrs">
             <template v-for="(i, index) in list" :key="index">
                 <!-- https://element-plus.gitee.io/zh-CN/component/table.html#table-column-%E5%B1%9E%E6%80%A7 -->
                 <!-- slot / expand(展开行) -->
@@ -53,7 +50,7 @@
                 </el-table-column>
                 <!-- hash / boolean -->
                 <el-table-column
-                    v-if=" ['hash', 'boolean'].includes(i.type)"
+                    v-if="['hash', 'boolean'].includes(i.type)"
                     :label="i.name"
                     :prop="i.value"
                     :width="i.width"
@@ -61,9 +58,13 @@
                     v-bind="i.bind"
                 >
                     <template #default="{ row }">
-                        {{ i.options
-                            ? (i.type === 'hash' ? i.options[row[i.value]] : i.options[row[i.value] ? 1 : 0])
-                            : row[i.value] }}
+                        {{
+                            i.options
+                                ? i.type === "hash"
+                                    ? i.options[row[i.value]]
+                                    : i.options[row[i.value] ? 1 : 0]
+                                : row[i.value]
+                        }}
                     </template>
                 </el-table-column>
 
@@ -78,10 +79,7 @@
                 >
                     <template #default="{ row }">
                         <template v-for="(val, valIndex) in row[i.value]" :key="valIndex">
-                            <el-tag
-                                :size="i.tagSize ?? ''"
-                                :type="val.type ? val.type : i.itemType ?? ''"
-                            >
+                            <el-tag :size="i.tagSize ?? ''" :type="val.type ? val.type : i.itemType ?? ''">
                                 {{ i.itemKey !== undefined ? val[i.itemKey] : val }}
                             </el-tag>
                         </template>
@@ -140,7 +138,7 @@
                                     : x.disabled"
                                 @click="x.actions(row)"
                             >
-                                {{ handleFun('name', x, [row]) }}
+                                {{ handleFun("name", x, [row]) }}
                             </el-button>
                             <template v-else>
                                 <template v-if="x.children">
@@ -158,7 +156,7 @@
                                             : k.disabled"
                                         @click="k.actions(row)"
                                     >
-                                        {{ handleFun('name', k, [row]) }}
+                                        {{ handleFun("name", k, [row]) }}
                                     </el-button>
                                 </template>
                             </template>
@@ -167,7 +165,6 @@
                 </el-table-column>
             </template>
         </el-table>
-        {{ list }}
     </el-card>
 </template>
 
@@ -175,6 +172,9 @@
 // import { ref, reactive } from 'vue';
 import { handleFun, judgmentType } from '@/scripts/base/methods';
 import type { PropType } from 'vue';
+
+// 可在eslint添加配置
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
 import type { IList as TList, IActions as TActions } from '@/types/components/list';
 
 export default {
@@ -186,43 +186,12 @@ export default {
         tableData: {
             type: Array,
             required: true,
-            default: () => [{
-                qqq: 'aaa',
-                qqqs: true,
-                aa: 1,
-            }],
+            default: () => [],
         },
         list: {
             type: Array as PropType<TList[]>,
             required: true,
-            default: (): TList[] => ([
-                {
-                    name: '123',
-                    type: 'text',
-                    value: 'qqq',
-                    align: 'left',
-                    bind: {
-                        sortable: true,
-                    },
-                },
-                {
-                    name: '123',
-                    type: 'boolean',
-                    value: 'qqqs',
-                    align: 'center',
-                    options: ['cuo', 'dui'],
-                },
-                {
-                    name: '123',
-                    type: 'hash',
-                    value: 'aa',
-                    align: 'center',
-                    options: ['0', '1', '2', '3'],
-                },
-            ]),
-            // default() {
-            //     return [] as TList[];
-            // },
+            default: (): TList[] => [],
         },
     },
 
