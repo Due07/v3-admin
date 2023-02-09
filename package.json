@@ -41,6 +41,7 @@
         "@iconify-json/ep": "^1.1.8",
         "@types/qs": "^6.9.7",
         "@vitejs/plugin-vue": "^4.0.0",
+        "@vitejs/plugin-vue-jsx": "^3.0.0",
         "eslint": "^8.31.0",
         "eslint-plugin-vue": "^9.9.0",
         "sass": "^1.57.1",

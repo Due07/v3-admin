@@ -33,7 +33,7 @@ export const handleFun = <T, K>(key: string, list: T, data: K[]) => {
  * 格式化时间
  * 格式 https://dayjs.fenxianglu.cn/category/display.html#%E6%A0%BC%E5%BC%8F%E5%8C%96
  * @param row 数据
- * @param list -> {value: string, type: 'date' | 'datetime'}
+ * @param {value: string, type: 'date' | 'datetime'} list
  * @param format 格式化格式
  * @returns String / Error
  */
