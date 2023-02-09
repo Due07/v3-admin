@@ -6,8 +6,8 @@
             "src/types",
         ],
         "declaration": true,
-        "target": "esnext",
-        // "target": "ES2022",
+        // "target": "esnext",
+        "target": "ES6",
         "experimentalDecorators": true, // 启用实验性的ES装饰器
         "useDefineForClassFields": false,
         "module": "esnext",

@@ -165,12 +165,14 @@
                 </el-table-column>
             </template>
         </el-table>
+        <pagination :size="1" :page="2" :total="0"/>
     </el-card>
 </template>
 
 <script lang="ts" setup>
 import { handleFun, judgmentType, formatterData } from '@/scripts/base/methods';
 import type { IList as TList, IActions as TActions } from '@/types/components/list';
+import pagination from '../pagination';
 
 withDefaults(
     defineProps<{
