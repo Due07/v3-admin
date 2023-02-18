@@ -1,8 +1,11 @@
 <script setup lang="ts">
 // import { ComponentInternalInstance, getCurrentInstance } from 'vue';
 // import { defineAsyncComponent } from 'vue';
+import Header from './components/base/Header';
+// import test from './components/base/test.vue';
 import HelloWorld from './components/HelloWorld.vue';
 import List from './components/layout/List/List.vue';
+// import VirtualList from './components/VirtualList/List.vue';
 import { IList } from './types/components/list';
 // defineAsyncComponent(() => import('./components/HelloWorld.vue'));
 // import haha from '@/services/HahaServices';
@@ -56,6 +59,13 @@ const tableData = [
 </script>
 
 <template>
+    <Header title-content="123">
+        <!-- <template #content>
+            <div class="flex items-center">
+            </div>
+        </template> -->
+    </Header>
+    <!-- <component :is="test"></component> -->
     {{ username }}
     <!-- <div class="flex">
         <a href="https://vitejs.dev" target="_blank">
@@ -65,8 +75,12 @@ const tableData = [
             <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
         </a>
     </div> -->
+
     <HelloWorld msg="Vite + Vue" />
     <List title="123" :list="list" :table-data="tableData" />
+    <!-- <VirtualList /> -->
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+
+</style>

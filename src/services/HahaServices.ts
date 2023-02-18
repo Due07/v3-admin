@@ -4,6 +4,7 @@ import HttpServices from './HttpServices';
 
 @Get('ga')
 export class HahaServices extends HttpServices {
+    ga = 1;
     @GetAttribute('/asd/:id/:name')
         getHaha!: (list: Object) => Promise<HttpResponseType<{value: string}>>;
 

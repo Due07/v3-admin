@@ -64,7 +64,7 @@ export default ({ mode }) => {
         ],
         server: {
             cors: true, // 默认启动，允许任何源
-            open: true, // 自动打开
+            // open: true, // 自动打开
             port: Number(ENV.VITE_APP_PORT) || 5173, //启动端口
             hmr: {
                 // host: '127.0.0.1',

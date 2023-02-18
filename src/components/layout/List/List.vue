@@ -172,7 +172,7 @@
 <script lang="ts" setup>
 import { handleFun, judgmentType, formatterData } from '@/scripts/base/methods';
 import type { IList as TList, IActions as TActions } from '@/types/components/list';
-import pagination from '../pagination';
+import pagination from '../pagination/pagination';
 
 withDefaults(
     defineProps<{
