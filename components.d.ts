@@ -17,7 +17,7 @@ declare module '@vue/runtime-core' {
     Header: typeof import('./src/components/base/Header.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     IEpPictureFilled: typeof import('~icons/ep/picture-filled')['default']
-    List: typeof import('./src/components/VirtualList/List.vue')['default']
+    List: typeof import('./src/components/layout/List/List.vue')['default']
     List1: typeof import('./src/components/layout/List/List-1.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

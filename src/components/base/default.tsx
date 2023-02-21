@@ -61,7 +61,8 @@ export default {
         const colorChange = (value: string | null) => value && getUseColorStore.updateColor(value);
 
         return (
-            <>
+            <div
+                class={'flex align-center'}>
                 <ElDropdown
                     trigger="click"
                     style="padding-right: 10px;"
@@ -75,7 +76,7 @@ export default {
                     onChange={colorChange}
                     show-alpha
                 />
-            </>
+            </div>
         );
     },
 };

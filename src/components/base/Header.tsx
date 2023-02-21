@@ -27,7 +27,7 @@ type slotName = 'icon' | 'title' | 'content' | 'extra' | 'breadcrumb' | 'default
 export default (prop: IProps) => {
     const props = {
         titleContent: prop.titleContent ?? '',
-        className: prop.className ?? '',
+        className: prop.className ?? 'justify-between',
     };
     console.log(props);
     const slots = useSlots();
@@ -53,16 +53,14 @@ export default (prop: IProps) => {
     return (
         <>
             <header
-                class={['el-header', props.className]}
-                v-slots={slot}
+                class={['el-header flex items-center', props.className]}
+                // v-slots={slot}
             >
-                <div class='flex h-full items-center'>
-                    {
-                        Object.values(slot).map((item) => {
-                            return item();
-                        })
-                    }
-                </div>
+                {
+                    Object.values(slot).map((item) => {
+                        return item();
+                    })
+                }
             </header>
         </>
     ) as unknown;
