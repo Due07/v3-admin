@@ -59,12 +59,7 @@ const tableData = [
 </script>
 
 <template>
-    <Header title-content="123">
-        <!-- <template #content>
-            <div class="flex items-center">
-            </div>
-        </template> -->
-    </Header>
+    <Header></Header>
     <!-- <component :is="test"></component> -->
     {{ username }}
     <!-- <div class="flex">
