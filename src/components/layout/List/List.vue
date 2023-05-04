@@ -165,7 +165,7 @@
                 </el-table-column>
             </template>
         </el-table>
-        <pagination :size="1" :page="2" :total="0"/>
+        <pagination :size="10" :page="2" :total="0"/>
     </el-card>
 </template>
 
