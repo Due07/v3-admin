@@ -1,14 +1,12 @@
 <template>
-    <el-form
-        :model="form"
-        v-bind="$attrs"
-    >
+    <el-form ref="refForm" :model="form" v-bind="$attrs">
         <template v-for="(i, iIndex) in column" :key="iIndex">
             <el-form-item
+                v-show="judgmentType(i.hide, 'Function') ? (i.hide as Function)(i, form) : i.hide ?? true"
                 :label="handleFun('name', i, [form, i])"
                 :prop="i.value"
                 v-bind="i.bind"
-                :rules="validateRules()"
+                :rules="fromItemRules(i)"
             >
                 <!-- TODO: doing~~~ -->
                 <!-- 文本 / 多行文本 / 密码 / 数字 -->
@@ -94,11 +92,15 @@
 </template>
 
 <script lang="ts" setup>
-// validateRules // TODO: doing~~~
-import { handleFun, judgmentType } from '@/scripts/base/methods';
+import ValidatorRule, { TRulesObj } from '@/scripts/helpers/ValidateRules';
+import { formatterData, handleFun, judgmentType } from '@/scripts/base/methods';
 // import { useSizeStore } from '@/store/state/GLOBAL_SIZE';
-import { onMounted, reactive } from 'vue';
+import { onMounted, ref, reactive, watch } from 'vue';
 import { IColumn } from './type';
+
+const validatorRule = new ValidatorRule();
+
+const refForm = ref();
 
 const prop = withDefaults(
     defineProps<{
@@ -110,7 +112,7 @@ const prop = withDefaults(
         column: undefined,
     },
 );
-let form: Object = {};
+let form: Object = reactive({});
 
 const dateRangeObj = {
     date: {
@@ -126,25 +128,83 @@ const dateRangeObj = {
 // TODO: test~
 // computed('size', () => useSizeStore().name);
 
-// const initData = (form: Object) => {
-//     if (Reflect.ownKeys(prop.formData).length || !prop.column) return false;
-//     prop.column.reduce((pre, cur) => {
+const initData = (initForm: Object, column: IColumn[]) => {
+    if (!Reflect.ownKeys(initForm).length || !column) return false;
+    return column.reduce((pre, cur) => {
+        if (Reflect.has(initForm, cur.value)) {
+            let value = '';
+            switch (cur.type) {
+                case 'date':
+                    value = cur.valueFormat
+                        ? formatterData(initForm, cur, cur.valueFormat)
+                        : formatterData(initForm, cur);
+                    break;
+                case 'datetime':
+                    value = cur.valueFormat
+                        ? formatterData(initForm, cur, cur.valueFormat)
+                        : formatterData(initForm, cur);;
+                    break;
+                default: {
+                    const nullValue = { inputNumber: null, number: 0 };
+                    // text textarea password number
+                    value = initForm[cur.value] ?? nullValue[cur.type];
+                    break;
+                }
+            }
 
-//     }, {});
-//     // return
-// };
+            pre[cur.value] = value;
+        }
+        return pre;
+    }, {});
+    // return
+};
 
-const validateRules = () => [];
+const fromItemRules = (item: IColumn) => {
+    return [
+        {required: item.required, message: item.message, trigger: 'blur'},
+        ...(item.rules ?? []),
+        ...(judgmentType(item.ruleType, 'Object')
+            ? ValidatorRule.validatorFun(item.ruleType as TRulesObj)
+            : (item.ruleType ? validatorRule.templateValidatorRule(item.ruleType as string) : [])
+        ),
+    ];
+};
+
+watch(() => (prop.formData),
+    // oVal: Object | undefined
+    (nVal: Object) => {
+        // console.log(nVal);
+        form = Object.assign(form, initData(nVal, prop.column));
+    },
+    { deep: true },
+);
+
+// 重置表单
+const resetForm = () => {
+    refForm.value.resetFields();
+};
 
 const onSubmit = () => {
-    console.log(form);
+    refForm.value.validate((validate: Boolean) => {
+        if (!validate) return;
+
+        // 处理逻辑
+        console.log(form, refForm);
+    });
 };
 
 onMounted(() => {
-    form = reactive({...prop.formData});
+    const initForm = initData(prop.formData, prop.column);
+    if (initForm) {
+        form = Object.assign(form, initForm);
+    }
     // console.log(prop.column);
 });
 
+// 暴露属性
+defineExpose({
+    resetForm,
+});
 </script>
 
 <style lang="scss">

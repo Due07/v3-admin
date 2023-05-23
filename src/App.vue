@@ -7,8 +7,7 @@ import Header from './components/base/Header';
 import HelloWorld from './components/HelloWorld.vue';
 import List from './components/layout/List/List.vue';
 
-import LayoutForm from '@/components/layout/Form/Form.vue';
-import { formData, cloumn } from '@/components/layout/Form/test';
+import FormTestView from './views/formTest.vue';
 
 // import VirtualList from './components/VirtualList/List.vue';
 import { IList } from './types/components/list';
@@ -66,22 +65,14 @@ const tableData = [
 
 <template>
     <el-config-provider :locale="zhCn">
-        <Header></Header>
+        <Header />
         <!-- <component :is="test"></component> -->
         {{ username }}
-        <!-- <div class="flex">
-            <a href="https://vitejs.dev" target="_blank">
-                <img src="/vite.svg" class="logo" alt="Vite logo" />
-            </a>
-            <a href="https://vuejs.org/" target="_blank">
-                <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-            </a>
-        </div> -->
 
         <HelloWorld msg="Vite + Vue" />
         <List title="123" :list="list" :table-data="tableData" />
 
-        <LayoutForm :form-data="formData" :column="cloumn" />
+        <FormTestView/>
         <!-- <VirtualList /> -->
     </el-config-provider>
 </template>

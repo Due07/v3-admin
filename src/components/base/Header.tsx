@@ -49,7 +49,7 @@ export default (prop: IProps) => {
     } else {
         slot = defaultSlot;
     }
-    console.log(slots, slot, slotArr, defaultSlot);
+    // console.log(slots, slot, slotArr, defaultSlot);
     return (
         <>
             <header

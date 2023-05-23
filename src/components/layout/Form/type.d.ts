@@ -1,3 +1,4 @@
+import { TRulesObj } from '@/scripts/helpers/ValidateRules';
 // 时间
 export interface IDate {
     connect?: string;
@@ -22,6 +23,10 @@ export interface IColumn extends IDate {
     value: string;
     type: TColumnType;
     required?: boolean;
+    message?: string;
+    rules?: Object[];
+    ruleType?: TRulesObj | 'phone' | 'passportNo' | 'email' | 'idCard' | 'number',
+    hide?: boolean | Function;
     placeholder?: string;
     bind?: Record<string, any>;
     slot?: string;
