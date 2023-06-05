@@ -1,4 +1,4 @@
-import { TRulesObj } from '@/scripts/helpers/ValidateRules';
+import { TRulesKey, TRulesObj } from '@/scripts/helpers/validateRules';
 // 时间
 export interface IDate {
     connect?: string;
@@ -16,7 +16,10 @@ export interface ISelectOptions {
     value: string | boolean | Number | Object;
 }
 
-export type TColumnType = 'text' | 'textarea' | 'password' | 'number' | 'inputNumber' | 'select' | 'date' | 'datetime';
+export type TColumnType = 'text' | 'textarea' | 'password'
+| 'number' | 'inputNumber' | 'select'
+| 'date' | 'datetime' | 'slot'
+| 'components';
 
 export interface IColumn extends IDate {
     name: string;
@@ -25,11 +28,12 @@ export interface IColumn extends IDate {
     required?: boolean;
     message?: string;
     rules?: Object[];
-    ruleType?: TRulesObj | 'phone' | 'passportNo' | 'email' | 'idCard' | 'number',
+    ruleType?: TRulesObj | TRulesKey,
     hide?: boolean | Function;
     placeholder?: string;
     bind?: Record<string, any>;
     slot?: string;
+    component?: Component;
     blur?: Function;
     change?: Function;
     clearable?: Boolean;

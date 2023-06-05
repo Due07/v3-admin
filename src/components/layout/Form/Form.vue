@@ -1,5 +1,5 @@
 <template>
-    <el-form ref="refForm" :model="form" v-bind="$attrs">
+    <el-form ref="refForm" :label-width="labelWidth" :model="form" v-bind="$attrs">
         <template v-for="(i, iIndex) in column" :key="iIndex">
             <el-form-item
                 v-show="judgmentType(i.hide, 'Function') ? (i.hide as Function)(i, form) : i.hide ?? true"
@@ -8,7 +8,6 @@
                 v-bind="i.bind"
                 :rules="fromItemRules(i)"
             >
-                <!-- TODO: doing~~~ -->
                 <!-- 文本 / 多行文本 / 密码 / 数字 -->
                 <el-input
                     v-if="['text', 'textarea', 'password', 'number'].includes(i.type)"
@@ -81,18 +80,21 @@
                     @change="i.change"
                 >
                 </el-date-picker>
-
+                <slot v-if="i.type === 'slot'" :name="i.value" :i="i" :form="form"></slot>
+                <slot v-if="i.type === 'components'">
+                    <component :is="i.component" :i="i" :form="form"></component>
+                </slot>
             </el-form-item>
         </template>
 
         <el-form-item>
-            <el-button @click="onSubmit">提交</el-button>
+            <el-button type="primary" @click="onSubmit">提交</el-button>
         </el-form-item>
     </el-form>
 </template>
 
 <script lang="ts" setup>
-import ValidatorRule, { TRulesObj } from '@/scripts/helpers/ValidateRules';
+import ValidatorRule, { TRulesKey, TRulesObj } from '@/scripts/helpers/validateRules';
 import { formatterData, handleFun, judgmentType } from '@/scripts/base/methods';
 // import { useSizeStore } from '@/store/state/GLOBAL_SIZE';
 import { onMounted, ref, reactive, watch } from 'vue';
@@ -104,10 +106,12 @@ const refForm = ref();
 
 const prop = withDefaults(
     defineProps<{
+        labelWidth?: string,
         formData: Record<string, any>,
         column: IColumn[],
     }>(),
     {
+        labelWidth: '100px',
         formData: () => ({}),
         column: undefined,
     },
@@ -165,7 +169,7 @@ const fromItemRules = (item: IColumn) => {
         ...(item.rules ?? []),
         ...(judgmentType(item.ruleType, 'Object')
             ? ValidatorRule.validatorFun(item.ruleType as TRulesObj)
-            : (item.ruleType ? validatorRule.templateValidatorRule(item.ruleType as string) : [])
+            : (item.ruleType ? validatorRule.templateValidatorRule(item.ruleType as TRulesKey) : [])
         ),
     ];
 };

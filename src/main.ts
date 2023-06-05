@@ -2,9 +2,9 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import store from './store';
 
+import 'tailwindcss/tailwind.css';
 import 'element-plus/dist/index.css';
 import 'dayjs/locale';
-import 'tailwindcss/tailwind.css';
 
 const app = createApp(App);
 // 全局挂载

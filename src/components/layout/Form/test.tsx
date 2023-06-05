@@ -2,6 +2,22 @@ import { IColumn } from './type';
 
 export const column: IColumn[] = [
     {
+        name: 'component组件',
+        type: 'components',
+        value: 'components',
+        component: (prop: Record<'i'|'form', any>) => {
+            return (<>
+                {JSON.stringify(prop.i)}
+                {JSON.stringify(prop.form)}
+            </>);
+        },
+    },
+    {
+        name: 'ce 插槽',
+        type: 'slot',
+        value: 'ce',
+    },
+    {
         name: 'ID',
         type: 'text',
         value: 'id',

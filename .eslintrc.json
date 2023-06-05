@@ -70,6 +70,7 @@
                 "ignoreUrls": true
             }
         ],
+        "vue/attribute-hyphenation": 2,
         "vue/html-indent": [
             "error",
             4,
