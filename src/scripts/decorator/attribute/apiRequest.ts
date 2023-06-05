@@ -50,7 +50,7 @@ export const GetAttribute: TAttributeFun = (
  * @param {Function | undefined} fun 处理参数方法
  * @param {keyof HttpServices} method 使用HttpServices下哪个方法
  */
-export const DeleteAttribute: TAttributeFun = Object.assign({}, GetAttribute);
+export const DeleteAttribute: TAttributeFun = GetAttribute.bind(null);
 
 /**
  * put 请求
@@ -107,7 +107,7 @@ export const PutAttribute: TAttributeFun = (
  * @param {{data: Function, config: Function}} fun 处理函数（data / config）
  * @param {keyof HttpServices} method 使用HttpServices下哪个方法
  */
-export const PostAttribute: TAttributeFun = Object.assign({}, PutAttribute);
+export const PostAttribute: TAttributeFun = PutAttribute.bind(null);
 
 /**
  * 导出函数

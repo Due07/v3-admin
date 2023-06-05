@@ -1,8 +1,15 @@
 <script setup lang="ts">
+import zhCn from 'element-plus/lib/locale/lang/zh-cn';
 // import { ComponentInternalInstance, getCurrentInstance } from 'vue';
 // import { defineAsyncComponent } from 'vue';
+import Header from './components/base/Header';
+// import test from './components/base/test.vue';
 import HelloWorld from './components/HelloWorld.vue';
 import List from './components/layout/List/List.vue';
+
+import FormTestView from './views/formTest.vue';
+
+// import VirtualList from './components/VirtualList/List.vue';
 import { IList } from './types/components/list';
 // defineAsyncComponent(() => import('./components/HelloWorld.vue'));
 // import haha from '@/services/HahaServices';
@@ -53,20 +60,21 @@ const tableData = [
 ];
 
 // console.log(haha.getList, haha.getHaha({id: 1, name: '牛'}));
+
 </script>
 
 <template>
-    {{ username }}
-    <!-- <div class="flex">
-        <a href="https://vitejs.dev" target="_blank">
-            <img src="/vite.svg" class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://vuejs.org/" target="_blank">
-            <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-        </a>
-    </div> -->
-    <HelloWorld msg="Vite + Vue" />
-    <List title="123" :list="list" :table-data="tableData" />
+    <el-config-provider :locale="zhCn">
+        <Header />
+        <!-- <component :is="test"></component> -->
+        {{ username }}
+
+        <HelloWorld msg="Vite + Vue" />
+        <List title="123" :list="list" :table-data="tableData" />
+
+        <FormTestView/>
+        <!-- <VirtualList /> -->
+    </el-config-provider>
 </template>
 
 <style scoped lang="scss"></style>

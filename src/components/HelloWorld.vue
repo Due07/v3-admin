@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useUserStore } from '@/store/state/user';
+import { useUserStore } from '@/store/state/USER';
+
 defineProps<{ msg: string }>();
 
 const count = ref(0);
 
 const useUser = useUserStore();
-
 // 更新
 // useUser.updateUserName('123');
 </script>
@@ -17,10 +17,6 @@ const useUser = useUserStore();
     <div>{{ useUser.name }}</div>
     <div class="card">
         <button type="button" @click="count++">count is {{ count }}</button>
-        <p>
-            Edit
-            <code>components/HelloWorld.vue</code> to test HMR
-        </p>
     </div>
 </template>
 

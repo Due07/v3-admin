@@ -49,6 +49,9 @@ export default ({ mode }) => {
                 ],
             }),
             components({
+                // dirs: ['src/components'], // 配置需要默认导入的自定义组件文件夹，该文件夹下的所有组件都会自动 import
+                dirs: [],
+                // exclude: [/.*\/src\/components\/+.*/],
                 resolvers: [
                     ElementPlusResolver(),
                     // 自动注册图标组件
@@ -64,7 +67,7 @@ export default ({ mode }) => {
         ],
         server: {
             cors: true, // 默认启动，允许任何源
-            open: true, // 自动打开
+            // open: true, // 自动打开
             port: Number(ENV.VITE_APP_PORT) || 5173, //启动端口
             hmr: {
                 // host: '127.0.0.1',

@@ -7,4 +7,4 @@ export default abstract class HttpServices {
     // HttpTest = new HttpMethod('/asd');
 }
 
-export const services = new class services extends HttpServices {};
+export const services = new class extends HttpServices {};
