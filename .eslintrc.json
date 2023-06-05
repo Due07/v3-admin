@@ -13,7 +13,7 @@
         "sourceType": "module",
         "ecmaFeatures": {
             "tsx": true,
-            "jsx": true,
+            "jsx": true, // true会导致 泛型尖头函数出错
             "legacyDecorators": true // 允许使用装饰器
         }
     },
@@ -93,6 +93,7 @@
                 "singleline": 4 // 一行最多四个属性
             }
         ],
+        "vue/require-v-for-key": 0, // v-for 是否必须key
         "no-multiple-empty-lines": [1,
             {
                 "max": 1
@@ -142,7 +143,9 @@
             "vars": "all"
             // "varsIgnorePattern": "[I|T]\\w+" // 约定I or T 定义类型 开头的不做校验
         }],
-        "no-unused-expressions": "error",
+        "no-unused-expressions": ["error", {
+            "allowShortCircuit": true // 允许使用 a && a()
+        }],
         "no-return-assign": "off",
         "max-classes-per-file": [
             "error",

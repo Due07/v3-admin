@@ -14,11 +14,13 @@ declare module '@vue/runtime-core' {
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTag: typeof import('element-plus/es')['ElTag']
+    Header: typeof import('./src/components/base/Header.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     IEpPictureFilled: typeof import('~icons/ep/picture-filled')['default']
     List: typeof import('./src/components/layout/List/List.vue')['default']
     List1: typeof import('./src/components/layout/List/List-1.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Test: typeof import('./src/components/base/test.vue')['default']
   }
 }
