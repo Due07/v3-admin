@@ -49,6 +49,9 @@ export default ({ mode }) => {
                 ],
             }),
             components({
+                // dirs: ['src/components'], // 配置需要默认导入的自定义组件文件夹，该文件夹下的所有组件都会自动 import
+                dirs: [],
+                // exclude: [/.*\/src\/components\/+.*/],
                 resolvers: [
                     ElementPlusResolver(),
                     // 自动注册图标组件

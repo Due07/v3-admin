@@ -29,7 +29,7 @@ export default (prop: IProps) => {
         titleContent: prop.titleContent ?? '',
         className: prop.className ?? 'justify-between',
     };
-    console.log(props);
+    // console.log(props);
     const slots = useSlots();
     // const slotArr = Object.keys(slots).filter(item => item !== 'default').length
     const slotArr = Object.keys(slots).length
@@ -49,7 +49,7 @@ export default (prop: IProps) => {
     } else {
         slot = defaultSlot;
     }
-    console.log(slots, slot, slotArr, defaultSlot);
+    // console.log(slots, slot, slotArr, defaultSlot);
     return (
         <>
             <header

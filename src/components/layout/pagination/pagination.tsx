@@ -12,7 +12,7 @@ interface Ipagination {
  * @param {Ipagination} prop 👇
  * ```typescript
  * prop = {
- *   size: 1,
+ *   size: 10,
  *   total: 0,
  *   page: 10,
  *   pageSizes?: [10, 20, 50],
@@ -21,7 +21,7 @@ interface Ipagination {
  */
 export default (prop: Ipagination) => {
     const pagin: Ipagination = {
-        size: prop.size ?? 1,
+        size: prop.size ?? 10,
         total: prop.total ?? 0,
         page: prop.page ?? 1,
         pageSizes: prop.pageSizes ?? [10, 20, 50],
