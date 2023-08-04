@@ -51,6 +51,13 @@ export const column: IColumn[] = [
             {id: 3, name: 'ce3', value: '1234', disabled: true},
         ],
     },
+    {
+        name: 'file',
+        type: 'file',
+        value: 'file',
+        fileType: 'image',
+        fileUploadInput: {accept: '.png', multiple: true},
+    },
 ];
 
 export const formData = {

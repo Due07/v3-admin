@@ -63,13 +63,7 @@
         "no-eval": 2, //禁止使用eval
         "no-implied-eval": 2, //禁止使用隐式eval
         "no-with": 2, //禁用with
-        "max-len": [
-            "error",
-            {
-                "code": 120,
-                "ignoreUrls": true
-            }
-        ],
+        "max-len": ["error", { "code": 120, "ignoreUrls": true }],
         "vue/attribute-hyphenation": 2,
         "vue/html-indent": [
             "error",
@@ -193,7 +187,8 @@
             {
                 "properties": "always"
             }
-        ]
+        ],
+        "@typescript-eslint/no-empty-interface": [2, { "allowSingleExtends": true }] // 禁止申明空接口
     },
     "globals": {
         "defineProps": "readonly",

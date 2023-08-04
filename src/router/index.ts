@@ -9,6 +9,10 @@ const routes: Array<RouteRecordRaw> = [
         },
         component: () => import('@/App.vue'),
     },
+    {
+        path: '*',
+        redirect: {name: 'Home'},
+    },
 ];
 
 export default createRouter({

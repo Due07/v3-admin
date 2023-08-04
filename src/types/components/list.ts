@@ -1,6 +1,6 @@
 export interface IActions {
     actions: Function;
-    plain?: string;
+    plain?: boolean;
     class?: Function | string;
     disabled?: Function | boolean;
     type?: Function | string;

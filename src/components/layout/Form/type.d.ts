@@ -1,4 +1,5 @@
 import { TRulesKey, TRulesObj } from '@/scripts/helpers/validateRules';
+import { IColumn as IFileColumn, IFileUploadProps } from '@/components/widget/FileUpload/type';
 // 时间
 export interface IDate {
     connect?: string;
@@ -12,16 +13,16 @@ export interface IDate {
 export interface ISelectOptions {
     id: number | string;
     name: string;
-    disabled?: Boolean;
+    disabled?: boolean;
     value: string | boolean | Number | Object;
 }
 
 export type TColumnType = 'text' | 'textarea' | 'password'
 | 'number' | 'inputNumber' | 'select'
 | 'date' | 'datetime' | 'slot'
-| 'components';
+| 'components' | 'file';
 
-export interface IColumn extends IDate {
+export interface IColumn extends IFileColumn, IFileUploadProps, IDate {
     name: string;
     value: string;
     type: TColumnType;
@@ -36,11 +37,11 @@ export interface IColumn extends IDate {
     component?: Component;
     blur?: Function;
     change?: Function;
-    clearable?: Boolean;
+    clearable?: boolean;
     itemBind?: Record<string, any>;
-    disabled?: Boolean;
-    readonly?: Boolean;
-    filterable?: Boolean;
+    disabled?: boolean;
+    readonly?: boolean;
+    filterable?: boolean;
     remoteMethod?: Function;
     visibleChange?: Function;
     options?: ISelectOptions[];

@@ -1,7 +1,6 @@
 import { stringify } from 'qs';
 import axios,
 { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosStatic } from 'axios';
-import { IHttpMethod } from '@/types/services';
 
 export default class {
     protected http: AxiosStatic | AxiosInstance;

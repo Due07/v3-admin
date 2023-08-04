@@ -15,7 +15,7 @@
                     :type="i.type"
                     :clearable="i.clearable ?? true"
                     :placeholder="i.placeholder"
-                    :readonly="i.readonly || i.disabled"
+                    :disabled="i.readonly || i.disabled"
                     v-bind="i.itemBind"
                     @blur="i.blur"
                     @change="i.change"
@@ -44,7 +44,7 @@
                     :clearable="i.clearable ?? true"
                     :placeholder="i.placeholder"
                     :filterable="judgmentType(i.remoteMethod, 'Function') || i.filterable"
-                    :remote="judgmentType(i.remoteMethod, 'Function')"
+                    :remote="judgmentType(i.remoteMethod, 'Function') ?? undefined"
                     :remote-method="i.remoteMethod"
                     v-bind="i.itemBind"
                     @change="i.change"
@@ -66,7 +66,7 @@
                     v-if="['date', 'datetime'].includes(i.type)"
                     v-model="form[i.value]"
                     :type="i.connect ? dateRangeObj[i.type].range : i.type"
-                    :placeholder="!i.connect && i.placeholder"
+                    :placeholder="(!i.connect && i.placeholder) || undefined"
                     :readonly="i.readonly || i.disabled"
                     :format="i.format ?? dateRangeObj[i.type].format"
                     :value-format="i.valueFormat ?? ''"
@@ -80,6 +80,14 @@
                     @change="i.change"
                 >
                 </el-date-picker>
+
+                <FileUpload
+                    v-if="i.type === 'file'"
+                    v-model:form-data="form"
+                    :column="i"
+                    :file-upload-input="i.fileUploadInput"
+                />
+
                 <slot v-if="i.type === 'slot'" :name="i.value" :i="i" :form="form"></slot>
                 <slot v-if="i.type === 'components'">
                     <component :is="i.component" :i="i" :form="form"></component>
@@ -94,6 +102,7 @@
 </template>
 
 <script lang="ts" setup>
+import FileUpload from '@/components/widget/FileUpload/index.vue';
 import ValidatorRule, { TRulesKey, TRulesObj } from '@/scripts/helpers/validateRules';
 import { formatterData, handleFun, judgmentType } from '@/scripts/base/methods';
 // import { useSizeStore } from '@/store/state/GLOBAL_SIZE';
@@ -186,6 +195,7 @@ watch(() => (prop.formData),
 // 重置表单
 const resetForm = () => {
     refForm.value.resetFields();
+    console.log(form);
 };
 
 const onSubmit = () => {

@@ -22,7 +22,10 @@ declare module '@vue/runtime-core' {
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTag: typeof import('element-plus/es')['ElTag']
+    IEpDelete: typeof import('~icons/ep/delete')['default']
     IEpPictureFilled: typeof import('~icons/ep/picture-filled')['default']
+    IEpSearch: typeof import('~icons/ep/search')['default']
+    IEpUploadFilled: typeof import('~icons/ep/upload-filled')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
