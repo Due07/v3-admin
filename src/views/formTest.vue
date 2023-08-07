@@ -1,16 +1,15 @@
 <template>
-    <LayoutForm ref="layoutForm" :form-data="form" :column="column">
-        <template #ce="{ i, form: forms }">
-            {{ JSON.stringify(i) }}
-            {{ JSON.stringify(forms) }}
-        </template>
-    </LayoutForm>
+  <LayoutForm ref="layoutForm" :form-data="form" :column="column">
+    <template #ce="{ i, form: forms }">
+      {{ JSON.stringify(i) }}
+      {{ JSON.stringify(forms) }}
+    </template>
+  </LayoutForm>
 
-    <!-- :upload-url="uploadUrl" -->
-    <el-button type="primary" size="default" @click="click">123</el-button>
-    <FileUpload ref="fileUpload" v-model:form-data="form" :column="{value: 'aa', fileType: 'image'}">
-    </FileUpload>
-
+  <!-- :upload-url="uploadUrl" -->
+  <el-button type="primary" size="default" @click="click">123</el-button>
+  <FileUpload ref="fileUpload" v-model:form-data="form" :column="{ value: 'aa', fileType: 'image' }">
+  </FileUpload>
 </template>
 <script setup lang="ts">
 import LayoutForm from '@/components/layout/Form/Form.vue';
@@ -31,8 +30,7 @@ const form = reactive(formData);
 // TODO: test
 const fileUpload = ref();
 const click = () => {
-    fileUpload.value.resetFileList();
+  fileUpload.value.resetFileList();
 };
 </script>
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

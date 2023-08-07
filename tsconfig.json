@@ -24,6 +24,6 @@
         "ignoreDeprecations": "5.0",
     },
     // "include": ["src/**/*.ts", "src/**/*.d.ts","src/**/*.tsx", "src/**/*.vue"],
-    "include": ["src/**/*"],
+    "include": ["src/**/*", "src/**/**/*"],
     "exclude": ["node_modules"]
 }

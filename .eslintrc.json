@@ -67,7 +67,7 @@
         "vue/attribute-hyphenation": 2,
         "vue/html-indent": [
             "error",
-            4,
+            2,
             {
                 "attribute": 1,
                 "baseIndent": 1,
@@ -105,7 +105,7 @@
         "no-debugger": "warn",
         "indent": [
             "error",
-            4,
+            2,
             {
                 "SwitchCase": 1,
                 "ignoredNodes": [
@@ -168,9 +168,9 @@
         "template-curly-spacing": "off",
         "@typescript-eslint/indent": [
             "error",
-            4,
+            2,
             {
-                "VariableDeclarator": 4,
+                "VariableDeclarator": 2,
                 "SwitchCase": 1
             }
         ],

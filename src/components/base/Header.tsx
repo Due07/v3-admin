@@ -3,8 +3,8 @@ import { useSlots } from 'vue';
 import DefaultSlot from './default';
 
 interface IProps {
-    titleContent?: string;
-    className?: string;
+  titleContent?: string;
+  className?: string;
 };
 
 type slotName = 'icon' | 'title' | 'content' | 'extra' | 'breadcrumb' | 'default';
@@ -25,43 +25,43 @@ type slotName = 'icon' | 'title' | 'content' | 'extra' | 'breadcrumb' | 'default
  *  ```
  */
 export default (prop: IProps) => {
-    const props = {
-        titleContent: prop.titleContent ?? '',
-        className: prop.className ?? 'justify-between',
-    };
-    // console.log(props);
-    const slots = useSlots();
-    // const slotArr = Object.keys(slots).filter(item => item !== 'default').length
-    const slotArr = Object.keys(slots).length
-        ? Object.keys(slots)
-        : [];
-    const defaultSlot = DefaultSlot;
-    let slot: Partial<Record<slotName, any>> = {};
+  const props = {
+    titleContent: prop.titleContent ?? '',
+    className: prop.className ?? 'justify-between',
+  };
+  // console.log(props);
+  const slots = useSlots();
+  // const slotArr = Object.keys(slots).filter(item => item !== 'default').length
+  const slotArr = Object.keys(slots).length
+    ? Object.keys(slots)
+    : [];
+  const defaultSlot = DefaultSlot;
+  let slot: Partial<Record<slotName, any>> = {};
 
-    if (slotArr.length) {
-        slot = slotArr.reduce((pre, cur) => {
-            const curObj = {
-                [cur]: (slots as Object)[cur],
-            };
-            return pre ? {...pre, ...curObj} : curObj;
-        }, {}) as typeof slot;
+  if (slotArr.length) {
+    slot = slotArr.reduce((pre, cur) => {
+      const curObj = {
+        [cur]: (slots as Object)[cur],
+      };
+      return pre ? { ...pre, ...curObj } : curObj;
+    }, {}) as typeof slot;
 
-    } else {
-        slot = defaultSlot;
-    }
-    // console.log(slots, slot, slotArr, defaultSlot);
-    return (
-        <>
-            <header
-                class={['el-header flex items-center', props.className]}
-                // v-slots={slot}
-            >
-                {
-                    Object.values(slot).map((item) => {
-                        return item();
-                    })
-                }
-            </header>
-        </>
-    ) as unknown;
+  } else {
+    slot = defaultSlot;
+  }
+  // console.log(slots, slot, slotArr, defaultSlot);
+  return (
+    <>
+      <header
+        class={['el-header flex items-center', props.className]}
+      // v-slots={slot}
+      >
+        {
+          Object.values(slot).map((item) => {
+            return item();
+          })
+        }
+      </header>
+    </>
+  ) as unknown;
 };
