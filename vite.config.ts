@@ -6,8 +6,6 @@ import autoImport from 'unplugin-auto-import/vite';
 import components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
-import Icons from 'unplugin-icons/vite';
-import IconsResolver from 'unplugin-icons/resolver';
 
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
@@ -41,12 +39,7 @@ export default ({ mode }) => {
       }),
       // 按需加载
       autoImport({
-        resolvers: [
-          ElementPlusResolver(),
-          IconsResolver({
-            prefix: 'Icon',
-          }),
-        ],
+        resolvers: [ ElementPlusResolver() ],
       }),
       components({
         // dirs: ['src/components'], // 配置需要默认导入的自定义组件文件夹，该文件夹下的所有组件都会自动 import
@@ -54,14 +47,7 @@ export default ({ mode }) => {
         // exclude: [/.*\/src\/components\/+.*/],
         resolvers: [
           ElementPlusResolver(),
-          // 自动注册图标组件
-          IconsResolver({
-            enabledCollections: ['ep'],
-          }),
         ],
-      }),
-      Icons({
-        autoInstall: true,
       }),
       // visualizer(),
     ],

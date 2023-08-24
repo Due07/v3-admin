@@ -1,22 +1,22 @@
 <template>
-    <el-page-header
-        icon=""
-        title=""
-        :content="titleContent"
+  <el-page-header
+    icon=""
+    title=""
+    :content="titleContent"
+  >
+    <template
+      v-for="(item, key, index) in (slotName ? slotName : defaultSlot)"
+      :key="index"
+      #[key]
     >
-        <template
-            v-for="(item, key, index) in (slotName ? slotName : defaultSlot)"
-            :key="index"
-            #[key]
-        >
-            <template v-if="slotName">
-                <slot :name="key"></slot>
-            </template>
-            <template v-else>
-                <component :is="item"></component>
-            </template>
-        </template>
-    </el-page-header>
+      <template v-if="slotName">
+        <slot :name="key"></slot>
+      </template>
+      <template v-else>
+        <component :is="item"></component>
+      </template>
+    </template>
+  </el-page-header>
 </template>
 
 <script lang="tsx" setup>
@@ -24,14 +24,14 @@ import { useSlots } from 'vue';
 import DefaultSlot from './default';
 
 export interface IProps {
-    titleContent?: string;
+  titleContent?: string;
 };
 
 export type TSlotName = Readonly<Record<string, any>> | undefined;
 
 withDefaults(defineProps<IProps>(),{
-    titleContent: '',
-    slotName: '',
+  titleContent: '',
+  slotName: '',
 });
 
 const slots = useSlots();

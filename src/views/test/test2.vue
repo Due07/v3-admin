@@ -1,23 +1,23 @@
 <template>
-    <div>
-
-    </div>
+  <div>
+    test2
+  </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref, reactive } from 'vue';
 
 export default {
-    setup(props, context) {
-        console.log(props, context);
-        const featureRef = ref('1');
-        const featureState = reactive({ property: 'value' });
+  setup(props, context) {
+    console.log(props, context);
+    const featureRef = ref('1');
+    const featureState = reactive({ property: 'value' });
 
-        return {
-            featureRef,
-            featureState,
-        };
-    },
+    return {
+      featureRef,
+      featureState,
+    };
+  },
 };
 </script>
 

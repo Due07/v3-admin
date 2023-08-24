@@ -18,7 +18,7 @@ type slotName = 'icon' | 'title' | 'content' | 'extra' | 'breadcrumb' | 'default
                 title	        标题内容
                 content	        内容
                 extra	        扩展设置
-                breadcrumb	    面包屑内容
+                breadcrumb	        面包屑内容
                 default	        默认内容
     tips: 仅推荐使用名称，无做任何处理
     注: 在组件中间不传递插槽，添加注释，注释会被render成默认插槽

@@ -8,8 +8,7 @@ import {
 {/* <ElIcon>
     <HelpFilled/>
 </ElIcon> */}
-import { useSizeStore, TSize } from '@/store/state/GLOBAL_SIZE';
-import { useColorStore } from '@/store/state/GLOBAL_COLOR';
+import { useGlobalStore } from '@/store/state/GLOBAL';
 
 /**
  * 默认配置项
@@ -29,11 +28,11 @@ export default {
     </div>
   ),
   extra: () => {
-    const getUseSizeStore = useSizeStore();
-    const onCommand = (command: TSize) => {
-      getUseSizeStore.updateSize(command);
+    const globalStore = useGlobalStore();
+    const onCommand = (command: typeof globalStore['SIZE']) => {
+      globalStore.setSize(command);
     };
-    const itemArr: TSize[] = ['large', 'default', 'small'];
+    const itemArr: typeof globalStore['SIZE'][] = ['large', 'default', 'small'];
 
     const dropdownSlot = {
       default: () => (<>
@@ -45,7 +44,7 @@ export default {
             {
               itemArr.map((item) => {
                 return (
-                  <ElDropdownItem command={item} disabled={getUseSizeStore.name === item}>
+                  <ElDropdownItem command={item} disabled={globalStore.SIZE === item}>
                     {item}
                   </ElDropdownItem>
                 );
@@ -57,8 +56,7 @@ export default {
       },
     };
 
-    const getUseColorStore = useColorStore();
-    const colorChange = (value: string | null) => value && getUseColorStore.updateColor(value);
+    const colorChange = (value: string | null) => value && globalStore.setColor(value);
 
     return (
       <div
@@ -71,8 +69,8 @@ export default {
         >
         </ElDropdown>
         <ElColorPicker
-          size={getUseSizeStore.name}
-          modelValue={getUseColorStore.name}
+          size={globalStore.SIZE}
+          modelValue={globalStore.COLOR}
           onChange={colorChange}
           show-alpha
         />

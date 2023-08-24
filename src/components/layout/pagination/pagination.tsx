@@ -1,5 +1,5 @@
 import { ElPagination } from 'element-plus';
-import { useSizeStore } from '@/store/state/GLOBAL_SIZE';
+import { useGlobalStore } from '@/store/state/GLOBAL';
 
 interface Ipagination {
   size: number;
@@ -28,7 +28,7 @@ export default (prop: Ipagination) => {
   };
   return (
     <ElPagination
-      small={useSizeStore().name === 'small'}
+      small={useGlobalStore().SIZE === 'small'}
       background={true}
       hide-on-single-page={true}
       layout="sizes, prev, pager, next, total, jumper"

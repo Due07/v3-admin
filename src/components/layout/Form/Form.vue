@@ -105,7 +105,6 @@
 import FileUpload from '@/components/widget/FileUpload/index.vue';
 import ValidatorRule, { TRulesKey, TRulesObj } from '@/scripts/helpers/validateRules';
 import { formatterData, handleFun, judgmentType } from '@/scripts/base/methods';
-// import { useSizeStore } from '@/store/state/GLOBAL_SIZE';
 import { onMounted, ref, reactive, watch } from 'vue';
 import { IColumn } from './type';
 
@@ -137,9 +136,6 @@ const dateRangeObj = {
     format: 'YYYY-MM-DD HH:mm:ss',
   },
 };
-
-// TODO: test~
-// computed('size', () => useSizeStore().name);
 
 const initData = (initForm: Object, column: IColumn[]) => {
   if (!Reflect.ownKeys(initForm).length || !column) return false;

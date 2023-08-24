@@ -1,6 +1,6 @@
 <template>
   <div>
-    test1
+    haha-index
   </div>
 </template>
 
