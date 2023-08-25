@@ -2,9 +2,9 @@ import HttpMethod from './base/method';
 
 export default abstract class HttpServices {
 
-    HttpClient = new HttpMethod(import.meta.env.VITE_APP_SERVICE_PREFIX);
+  HttpClient = new HttpMethod(import.meta.env.VITE_APP_SERVICE_PREFIX);
 
-    // HttpTest = new HttpMethod('/asd');
+  // HttpTest = new HttpMethod('/asd');
 }
 
-export const services = new class extends HttpServices {};
+export const services = new class extends HttpServices { };

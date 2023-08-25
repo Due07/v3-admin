@@ -6,7 +6,6 @@ import autoImport from 'unplugin-auto-import/vite';
 import components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
-
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 
@@ -22,7 +21,10 @@ import * as path from 'path';
 export default ({ mode }) => {
   const ENV = loadEnv(mode, process.cwd());
   return defineConfig({
-    envDir: path.resolve(__dirname, './env'),
+    // https://cn.vitejs.dev/config/#using-environment-variables-in-config
+    // envDir: path.resolve(__dirname, './'),
+    // root: process.cwd(),
+
     resolve: {
       //设置别名
       alias: { '@': path.resolve(__dirname, 'src') },

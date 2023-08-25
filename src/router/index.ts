@@ -59,7 +59,7 @@ router.beforeEach((to, form, next) => {
   const routerStore = useRouterStore();
   if (!routerStore.baseRouter.length) routerStore.getBaseRouter(routes);
 
-  console.log(to, router.hasRoute(to.name as string));
+  // console.log(to, router.hasRoute(to.name as string));
 
   if (!router.hasRoute(to.name as string)) {
     console.warn('no router path!', to);

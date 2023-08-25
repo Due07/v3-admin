@@ -8,9 +8,11 @@
 
 <script setup lang="ts">
 import zhCn from 'element-plus/lib/locale/lang/zh-cn';
+// import { services } from '@/services/HttpServices';
 // import { defineAsyncComponent } from 'vue';
-
 // defineAsyncComponent(() => import('./components/HelloWorld.vue'));
+
+console.log(import.meta.env);
 
 // const { appContext } = getCurrentInstance() as ComponentInternalInstance;
 // console.log(appContext.config.globalProperties.$message);
