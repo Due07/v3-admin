@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia';
 import piniaPersistConfig from '@/scripts/base/piniaPersist';
-import { IGlobalState } from '../types';
+import { TGlobalState } from '../types';
 
 /** 全局数据状态 */
 export const useGlobalStore = defineStore({
   id: 'globalStore',
-  state: (): IGlobalState => ({
-    ADMIN_NAME: '后台管理系统',
+  state: (): TGlobalState => ({
+    ADMIN_NAME: import.meta.env.VITE_APP_ADMIN_NAME,
     isCollapse: false,
     COLOR: 'rgba(64, 158, 255, 1)',
     SIZE: 'default',
@@ -22,7 +22,7 @@ export const useGlobalStore = defineStore({
       this.COLOR = value;
     },
     /** 全局Size */
-    setSize (value: IGlobalState['SIZE']) {
+    setSize (value: TGlobalState['SIZE']) {
       this.SIZE = value;
     },
   },

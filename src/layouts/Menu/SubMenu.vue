@@ -23,9 +23,8 @@
   </template>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup name="SubMenu">
 import { RouteRecordRaw } from 'vue-router';
-// TODO: 待定
 defineProps<{ menuList: RouteRecordRaw[] }>();
 
 </script>

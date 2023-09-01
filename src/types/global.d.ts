@@ -21,4 +21,20 @@ declare global {
     message: string;
     status: string;
   }
+
+  // namespace Menu {
+  //   interface MenuOptions {
+  //     path: string,
+  //     name: string,
+  //     component?: string | (<T>() => Promise<T>),
+  //     redirect?: string,
+  //     meta: MenuMeta,
+  //     children?: MenuOptions[];
+  //   }
+  //   interface MenuMeta {
+  //     title?: string,
+  //     icon?: string,
+  //     isHide?: boolean
+  //   }
+  // }
 }

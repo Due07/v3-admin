@@ -5,6 +5,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import autoImport from 'unplugin-auto-import/vite';
 import components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import { createHtmlPlugin } from 'vite-plugin-html';
 
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
@@ -33,6 +34,12 @@ export default ({ mode }) => {
       vue({reactivityTransform: true}), // 响应性语法糖
       // name 可以写在 script 标签上 or 文件名作为组件名
       vueSetupExtend({}),
+      // 注入变量到 html 文件
+      createHtmlPlugin({
+        inject: {
+          data: { title: ENV.VITE_APP_ADMIN_NAME },
+        },
+      }),
       vueJsx({}),
       // eslint 自动校验
       eslintPlugin({
@@ -56,7 +63,7 @@ export default ({ mode }) => {
     server: {
       cors: true, // 默认启动，允许任何源
       // open: true, // 自动打开
-      port: Number(ENV.VITE_APP_PORT) || 5173, //启动端口
+      port: +ENV.VITE_APP_PORT || 5173, //启动端口
       hmr: {
         // host: '127.0.0.1',
         host: ENV.VITE_APP_BASE_URL,

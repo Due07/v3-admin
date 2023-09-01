@@ -44,7 +44,7 @@
           :width="i.width"
           :align="i.align ?? 'center'"
           v-bind="i.bind"
-          :formatter="(row: unknown) => (i.formatter ? formatterData(row, i) : i.formatter)"
+          :formatter="(row) => (i.formatter ? i.formatter(row, i) : formatterData(row, i))"
         >
           <!-- formatter格式化内容 不可使用插槽 -->
         </el-table-column>

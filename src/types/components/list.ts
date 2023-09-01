@@ -19,7 +19,7 @@ export interface IList {
   tagSize?: '' | 'large' | 'small',
   itemKey?: string | number,
   itemType?: '' | 'primary' | 'success' | 'info' | 'warning' | 'danger',
-  fit?: string;
+  fit?: 'fill' | 'cover' | 'contain' | 'none' | 'scale-down',
   lazy?: boolean;
   bind?: Record<string, any>;
   width?: string;
