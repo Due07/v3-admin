@@ -1,17 +1,20 @@
+/** 基本数据方法 */
+
 import type { TBasicType } from '@/types/scripts/base';
 // elem-plus 中存在dayjs
 import dayjs from 'dayjs';
+
 /**
  * 判断类型
- * @param data 数据
- * @param type 判断类型
- * @returns { Boolean }
+ * @param {*} data 数据
+ * @param { undefined | String } type 判断类型 -> 不传则返回 数据类型
+ * @returns { Boolean | String }
  */
-export const judgmentType = <T, R = TBasicType>(data: T, type: TBasicType | R) => {
+export const judgmentType = <T, R = TBasicType>(data: T, type?: TBasicType | R) => {
   const test = /^\[object +(\S*)+\]$/;
   const typeStr = Reflect.toString.call(data);
   const match = typeStr.match(test);
-  return match && match[1] === type;
+  return match && (type ? match[1] === type : match[1]);
 };
 
 /**
@@ -47,37 +50,18 @@ export const formatterData = <
 };
 
 /**
- * Blob / File 转成base64
- * @param {File} file 上传文件
- * @returns {Promise} base64
+ * 扁平化数据列表
+ * @param {Array[T]} list 数据源
+ * @param {string} targetName 目标key
+ * @returns {WeakMap} 返回扁平化后的数据
  */
-export const blobToBase64 = (file: File) => {
-  const reader = new FileReader();
-  return new Promise((resolve) => {
-    reader.addEventListener('load', () => {
-      resolve(reader.result);
-    });
-    reader.readAsDataURL(file);
-  });
-};
+export const floatList = <T extends object>(list: T[], targetName: string) => {
+  return list.reduce((pre: T[], cur: T) => {
+    let childrenList: T[] = [];
 
-/**
- * base64 转 File
- * @param {Base64} baseUrl base64
- * @param fileName 文件名称
- * @returns {File} File 文件
- */
-export const baseToBlob = (baseUrl: string, fileName: string): File => {
-  const arr = baseUrl.split(',');
-  const mime = (arr[0].match(/:(.*?);/) ?? { 1: 'png' })[1]; //mime类型 image/png
-  const bstr = atob(arr[1]); //base64 解码
-
-  let n = bstr.length;
-  const u8arr = new Uint8Array(n);
-
-  while (n--) {
-    u8arr[n] = bstr.charCodeAt(n);
-  }
-
-  return new File([u8arr], fileName, { type: mime });
+    if (Reflect.has(cur, targetName) && judgmentType(cur[targetName], 'Array')) {
+      childrenList = floatList(cur[targetName], targetName);
+    }
+    return [...pre, cur, ...childrenList];
+  }, []);
 };

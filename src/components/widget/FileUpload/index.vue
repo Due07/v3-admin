@@ -49,7 +49,7 @@ import PicturePreview from '@/components/widget/PicturePreview/index.vue';
 import { onMounted, reactive, ref } from 'vue';
 import { IColumn, IFileObj, Input } from './type';
 import { clearReactive } from '@/scripts/base/utils';
-import { blobToBase64 } from '@/scripts/base/methods';
+import { blobToBase64 } from '@/scripts/base/file';
 
 /**
  * @param acceptRegExp 过滤正则

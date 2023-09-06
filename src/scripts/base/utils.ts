@@ -1,3 +1,4 @@
+/** 工具 */
 import { isReactive } from 'vue';
 import { judgmentType } from './methods';
 

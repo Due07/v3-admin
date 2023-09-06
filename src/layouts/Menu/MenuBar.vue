@@ -28,7 +28,7 @@
 <script lang="ts" setup name="MenuBar">
 import SubMenu from '@/layouts/Menu/SubMenu.vue';
 
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { ROUTER_HOME } from '@/config';
 import { useRouterStore } from '@/store/state/router';
 import { useGlobalStore } from '@/store/state/GLOBAL';
@@ -41,6 +41,11 @@ const router = useRouter();
 const subMenuList = computed(() => routerStore.visibleRouter);
 const isCollapse = computed(() => globalStore.isCollapse);
 
+onMounted(() => {
+  // TODO: 获取权限列表
+  routerStore.getRoleRouter();
+  console.log(routerStore.roleRouter);
+});
 </script>
 
 <style lang="scss" scoped>

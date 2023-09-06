@@ -37,7 +37,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'as',
         name: 'index',
-        meta: { title: 'index' },
+        meta: { title: 'index', power: ['test'] },
         component: () => import('@/views/test/index.vue'),
       },
       {
