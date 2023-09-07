@@ -10,11 +10,11 @@ import dayjs from 'dayjs';
  * @param { undefined | String } type 判断类型 -> 不传则返回 数据类型
  * @returns { Boolean | String }
  */
-export const judgmentType = <T, R = TBasicType>(data: T, type?: TBasicType | R) => {
+export const judgmentType = <T, R = TBasicType>(data: T, type?: TBasicType | R): typeof type | boolean => {
   const test = /^\[object +(\S*)+\]$/;
   const typeStr = Reflect.toString.call(data);
   const match = typeStr.match(test);
-  return match && (type ? match[1] === type : match[1]);
+  return !!match && (type ? match[1] === type : match[1] as typeof type);
 };
 
 /**
@@ -51,11 +51,11 @@ export const formatterData = <
 
 /**
  * 扁平化数据列表
- * @param {Array[T]} list 数据源
+ * @param {Array<T>} list 数据源
  * @param {string} targetName 目标key
- * @returns {WeakMap} 返回扁平化后的数据
+ * @returns {Array<T>} 返回扁平化后的数据
  */
-export const floatList = <T extends object>(list: T[], targetName: string) => {
+export const floatList = <T extends object>(list: T[], targetName: string): T[] => {
   return list.reduce((pre: T[], cur: T) => {
     let childrenList: T[] = [];
 
