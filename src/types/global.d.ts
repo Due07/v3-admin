@@ -38,3 +38,13 @@ declare global {
   //   }
   // }
 }
+declare module 'vue-router' {
+  /** 路由中的meta */
+  interface RouteMeta {
+    title?: string,
+    /** 是否不显示路由 */
+    isHide?: boolean,
+    /** 路由权限数组 */
+    power?: string[] | string
+  }
+}
