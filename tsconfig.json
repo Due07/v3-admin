@@ -1,29 +1,40 @@
 {
-    "compilerOptions": {
-        // docs: https://zhuanlan.zhihu.com/p/436988495
-        "declaration": true,
-        // "target": "esnext",
-        "target": "ESNext",
-        "experimentalDecorators": true, // 启用实验性的ES装饰器
-        // "emitDecoratorMetadata": true,         // 为装饰器提供元数据的支持
-        "useDefineForClassFields": false,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "strict": true,
-        "jsx": "preserve",
-        "sourceMap": true,
-        "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "lib": ["ESNext", "DOM"],
-        "baseUrl": "./",
-        "paths": { "@": ["src"], "@/*": ["src/*"] },
-        "types": ["vite/client", "element-plus/global"],
-        "noEmit": true, // vue3的一些依赖包,版本过低,导致的错误升级vue版本
-        "skipLibCheck": true, // Cannot find module '@babel/types' or its corresponding type declarations.
-        "suppressImplicitAnyIndexErrors": true, // 修复无法使用object[key]方式
-        "ignoreDeprecations": "5.0",
+  "compilerOptions": {
+    // docs: https://zhuanlan.zhihu.com/p/436988495
+    "declaration": true,
+    // "target": "esnext",
+    "target": "ESNext",
+    "experimentalDecorators": true, // 启用实验性的ES装饰器
+    // "emitDecoratorMetadata": true,         // 为装饰器提供元数据的支持
+    "useDefineForClassFields": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM"],
+    "baseUrl": "./",
+    "paths": {
+      "@": ["src"],
+      "@/*": ["src/*"]
     },
-    // "include": ["src/**/*.ts", "src/**/*.d.ts","src/**/*.tsx", "src/**/*.vue"],
-    "include": ["src/**/*", "src/**/**/*"],
-    "exclude": ["node_modules"]
+    "types": [
+      "vite/client",
+      "element-plus/global"
+    ],
+    "noEmit": true, // vue3的一些依赖包,版本过低,导致的错误升级vue版本
+    "skipLibCheck": true, // Cannot find module '@babel/types' or its corresponding type declarations.
+    "suppressImplicitAnyIndexErrors": true, // 修复无法使用object[key]方式
+    "ignoreDeprecations": "5.0",
+  },
+  // "include": ["src/**/*.ts", "src/**/*.d.ts","src/**/*.tsx", "src/**/*.vue"],
+  "include": [
+    "src/**/*",
+    "src/**/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

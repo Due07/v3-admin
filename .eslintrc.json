@@ -86,19 +86,11 @@
       }
     ],
     "vue/multi-word-component-names": 0, // 希望组件以组合驼峰式命名
-    "vue/html-self-closing": [
-      0
-    ],
-    "vue/multiline-html-element-content-newline": [
-      0
-    ],
-    "vue/singleline-html-element-content-newline": [
-      0
-    ],
+    "vue/html-self-closing": [0],
+    "vue/multiline-html-element-content-newline": [0],
+    "vue/singleline-html-element-content-newline": [0],
     "vue/html-closing-bracket-newline": 0,
-    "vue/no-v-html": [
-      0
-    ],
+    "vue/no-v-html": [0],
     "vue/require-default-prop": 0, // prop 是否添加默认值
     "vue/max-attributes-per-line": [
       2,
@@ -107,19 +99,10 @@
       }
     ],
     "vue/require-v-for-key": 0, // v-for 是否必须key
-    "no-multiple-empty-lines": [
-      1,
-      {
-        "max": 1
-      }
-    ], //空行最多不能超过2行
+    "no-multiple-empty-lines": [1, { "max": 1 }], //空行最多不能超过2行
     "camelcase": 2, //强制驼峰法命名
     "use-isnan": 2, //禁止比较时使用NaN，只能用isNaN()
-    "linebreak-style": [
-      0,
-      "error",
-      "windows"
-    ],
+    "linebreak-style": [0, "error", "windows"],
     "no-console": 0, // 是否console
     "no-debugger": "warn",
     "indent": [
@@ -132,25 +115,16 @@
         ]
       }
     ],
-    "no-mixed-spaces-and-tabs": [
-      "error",
-      false
-    ],
+    "no-mixed-spaces-and-tabs": ["error", false],
     "func-names": "off",
     "no-param-reassign": "off",
-    "object-curly-spacing": "off",
+    "object-curly-spacing": "off", // object 是否需要空格
     "arrow-parens": "off",
     "object-shorthand": "off",
     "prefer-destructuring": "off",
     "consistent-return": "off",
-    "comma-dangle": [
-      "error",
-      "always-multiline"
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
+    "comma-dangle": ["error", "always-multiline"],
+    "quotes": ["error", "single"],
     "guard-for-in": "error",
     "no-var": "error",
     "no-unused-vars": [
@@ -167,10 +141,7 @@
       }
     ],
     "no-return-assign": "off",
-    "max-classes-per-file": [
-      "error",
-      2
-    ],
+    "max-classes-per-file": ["error", 2],
     "class-methods-use-this": "off",
     "no-continue": "off",
     "no-mixed-operators": "off",
@@ -207,12 +178,7 @@
     ],
     "@typescript-eslint/interface-name-prefix": 0,
     "@typescript-eslint/no-parameter-properties": 0,
-    "@typescript-eslint/camelcase": [
-      "off",
-      {
-        "properties": "always"
-      }
-    ],
+    "@typescript-eslint/camelcase": ["off", { "properties": "always" }],
     "@typescript-eslint/no-empty-interface": [
       2,
       {

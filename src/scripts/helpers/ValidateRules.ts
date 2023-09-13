@@ -4,7 +4,7 @@
 export type TRulesObj = { test: RegExp, error: string };
 export type TRulesKey = 'phone' | 'passportNo' | 'email' | 'idCard' | 'number';
 
-export default class ValidatorRule<T extends string = string> {
+export default class ValidatorRule<T extends string> {
   // Record<string, TRulesObj>
   protected formatRules = {
     phone: { test: /^1[3456789]\d{9}$/i, error: '手机号格式有误' },
