@@ -1,17 +1,20 @@
+/** 基本数据方法 */
+
 import type { TBasicType } from '@/types/scripts/base';
 // elem-plus 中存在dayjs
 import dayjs from 'dayjs';
+
 /**
  * 判断类型
- * @param data 数据
- * @param type 判断类型
- * @returns { Boolean }
+ * @param {*} data 数据
+ * @param { undefined | String } type 判断类型 -> 不传则返回 数据类型
+ * @returns { Boolean | String }
  */
-export const judgmentType = <T>(data: T, type: TBasicType) => {
-    const test = /^\[object +(\S*)+\]$/;
-    const typeStr = Reflect.toString.call(data);
-    const match = typeStr.match(test);
-    return match && match[1] === type;
+export const judgmentType = <T, R = TBasicType>(data: T, type?: TBasicType | R): typeof type | boolean => {
+  const test = /^\[object +(\S*)+\]$/;
+  const typeStr = Reflect.toString.call(data);
+  const match = typeStr.match(test);
+  return !!match && (type ? match[1] === type : match[1] as typeof type);
 };
 
 /**
@@ -22,11 +25,11 @@ export const judgmentType = <T>(data: T, type: TBasicType) => {
  * @returns
  */
 export const handleFun = <T, K>(key: string, list: T, data: K[]) => {
-    if (list && judgmentType(list[key], 'Function')) {
-        return list[key].call(undefined, ...data);
-    }
+  if (list && judgmentType(list[key], 'Function')) {
+    return list[key].call(undefined, ...data);
+  }
 
-    return list[key];
+  return list[key];
 };
 
 /**
@@ -38,10 +41,27 @@ export const handleFun = <T, K>(key: string, list: T, data: K[]) => {
  * @returns String / Error
  */
 export const formatterData = <
-    T, K extends Record<string, any>,
+  T, K extends Record<string, any>,
 >(row: T, list: K, format?: string) => {
-    const handleFormat = format ? format : (
-        list.type === 'date' ? 'YYYY-MM-DD' : 'YYYY-MM-DD hh:mm:ss'
-    );
-    return dayjs(row[list.value]).format(handleFormat);
+  const handleFormat = format ? format : (
+    list.type === 'date' ? 'YYYY-MM-DD' : 'YYYY-MM-DD hh:mm:ss'
+  );
+  return dayjs(row[list.value]).format(handleFormat);
+};
+
+/**
+ * 扁平化数据列表
+ * @param {Array<T>} list 数据源
+ * @param {string} targetName 目标key
+ * @returns {Array<T>} 返回扁平化后的数据
+ */
+export const floatList = <T extends object>(list: T[], targetName: string): T[] => {
+  return list.reduce((pre: T[], cur: T) => {
+    let childrenList: T[] = [];
+
+    if (Reflect.has(cur, targetName) && judgmentType(cur[targetName], 'Array')) {
+      childrenList = floatList(cur[targetName], targetName);
+    }
+    return [...pre, cur, ...childrenList];
+  }, []);
 };

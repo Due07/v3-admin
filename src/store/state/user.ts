@@ -1,15 +1,21 @@
 import { defineStore } from 'pinia';
+import { type IUserState } from '../types';
 
 export const useUserStore = defineStore({
-    id: 'USER',
-    state: () => {
-        return {
-            name: '张三',
-        };
+  id: 'user',
+  state: (): IUserState => {
+    return {
+      user: {
+        name: 'string', // 用户名称
+        account: 'string',
+        id: 1,
+        authorityList: ['test', 'dev', 'prod'], // 权限列表
+      },
+    };
+  },
+  actions: {
+    setUser(user: IUserState['user']) {
+      this.user = user;
     },
-    actions: {
-        updateUserName(name: string) {
-            this.name = name;
-        },
-    },
+  },
 });
