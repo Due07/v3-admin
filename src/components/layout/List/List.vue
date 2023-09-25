@@ -109,8 +109,9 @@
               :preview-src-list="[row[i.value]]"
             >
               <template #error>
-                <i-ep-picture-filled class="mx-auto relative top-1/2 -translate-y-2/4">
-                </i-ep-picture-filled>
+                <el-icon class="mx-auto relative top-1/2 -translate-y-2/4">
+                  <PictureFilled/>
+                </el-icon>
               </template>
             </el-image>
           </template>

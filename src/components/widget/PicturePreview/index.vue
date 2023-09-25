@@ -13,8 +13,12 @@
           </template> -->
         </el-image>
         <div class="mask-options flex items-center justify-center absolute left-0 top-0 w-full h-full">
-          <i-ep-search class="white" @click="onPreview(index)" />
-          <i-ep-delete class="white delete" @click.stop="emits('delete', item, index);" />
+          <el-icon class="white" @click="onPreview(index)">
+            <component :is="'search'"></component>
+          </el-icon>
+          <el-icon class="white delete" @click.stop="emits('delete', item, index)">
+            <component :is="'delete'"></component>
+          </el-icon>
         </div>
       </div>
     </template>

@@ -4,7 +4,9 @@
       <slot></slot>
     </template>
     <template v-else>
-      <i-ep-upload-filled class="upload-icon"/>
+      <el-icon class="upload-icon">
+        <UploadFilled/>
+      </el-icon>
       <div class="file-upload-text">将文件拖到此处，或<em>点击上传</em></div>
     </template>
     <input

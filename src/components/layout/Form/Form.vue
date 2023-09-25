@@ -11,10 +11,10 @@
         <!-- 文本 / 多行文本 / 密码 / 数字 -->
         <el-input
           v-if="['text', 'textarea', 'password', 'number'].includes(i.type)"
-          v-model="form[i.value]"
+          v-model.trim="form[i.value]"
           :type="i.type"
           :clearable="i.clearable ?? true"
-          :placeholder="i.placeholder"
+          :placeholder="!Array.isArray(i.placeholder) ? i.placeholder : i.placeholder[0]"
           :disabled="i.readonly || i.disabled"
           v-bind="i.itemBind"
           @blur="i.blur"
@@ -31,7 +31,7 @@
           v-model="form[i.value]"
           v-bind="i.itemBind"
           :readonly="i.readonly || i.disabled"
-          :placeholder="i.placeholder"
+          :placeholder="!Array.isArray(i.placeholder) ? i.placeholder : i.placeholder[0]"
           @change="i.change"
         >
         </el-input-number>
@@ -42,7 +42,7 @@
           v-model="form[i.value]"
           :readonly="i.readonly || i.disabled"
           :clearable="i.clearable ?? true"
-          :placeholder="i.placeholder"
+          :placeholder="!Array.isArray(i.placeholder) ? i.placeholder : i.placeholder[0]"
           :filterable="judgmentType(i.remoteMethod, 'Function') as boolean || i.filterable"
           :remote="judgmentType(i.remoteMethod, 'Function') as boolean ?? undefined"
           :remote-method="i.remoteMethod"
@@ -66,15 +66,15 @@
           v-if="['date', 'datetime'].includes(i.type)"
           v-model="form[i.value]"
           :type="i.connect ? dateRangeObj[i.type].range : i.type"
-          :placeholder="(!i.connect && i.placeholder) || undefined"
+          :placeholder="(!i.connect && (!Array.isArray(i.placeholder) ? i.placeholder : i.placeholder[0])) || undefined"
           :readonly="i.readonly || i.disabled"
           :format="i.format ?? dateRangeObj[i.type].format"
           :value-format="i.valueFormat ?? ''"
           :disabled-date="i.disabledDate"
 
           :range-separator="i.connect && (i.rangeSeparator ?? '至')"
-          :start-placeholder="(i.connect && Array.isArray(i.placeholder)) && i.placeholder[0]"
-          :end-placeholder="(i.connect && Array.isArray(i.placeholder)) && [...i.placeholder].pop()"
+          :start-placeholder="(i.connect && Array.isArray(i.placeholder)) && i.placeholder[0] || undefined"
+          :end-placeholder="(i.connect && Array.isArray(i.placeholder)) && [...i.placeholder].pop() || undefined"
 
           v-bind="i.itemBind"
           @change="i.change"
@@ -101,11 +101,11 @@
   </el-form>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts"  setup>
 import FileUpload from '@/components/widget/FileUpload/index.vue';
 import ValidatorRule, { TRulesKey, TRulesObj } from '@/scripts/helpers/validateRules';
 import { formatterData, handleFun, judgmentType } from '@/scripts/base/methods';
-import { onMounted, ref, reactive, watch } from 'vue';
+import { onMounted, ref, reactive, watch, readonly } from 'vue';
 import { IColumn } from './type';
 
 const validatorRule = new ValidatorRule();
@@ -126,7 +126,7 @@ const prop = withDefaults(
 );
 let form: Object = reactive({});
 
-const dateRangeObj = {
+const dateRangeObj = readonly({
   date: {
     range: 'daterange',
     format: 'YYYY-MM-DD',
@@ -135,7 +135,7 @@ const dateRangeObj = {
     range: 'datetimerange',
     format: 'YYYY-MM-DD HH:mm:ss',
   },
-};
+});
 
 const initData = (initForm: Object, column: IColumn[]) => {
   if (!Reflect.ownKeys(initForm).length || !column) return false;
