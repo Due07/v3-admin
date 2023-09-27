@@ -41,18 +41,6 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/views/test/index.vue'),
       },
       {
-        path: '/aaa',
-        name: 'asdhoa',
-        meta: { title: 'test1' },
-        component: () => import('@/views/test/test1.vue'),
-      },
-      {
-        path: '/bbb',
-        name: 'bbb',
-        meta: { title: 'test2' },
-        component: () => import('@/views/test/test2.vue'),
-      },
-      {
         path: '/form-test',
         name: 'Form.Test',
         meta: { title: 'formTest' },
@@ -63,6 +51,12 @@ const routes: RouteRecordRaw[] = [
         name: 'Form.Test-1',
         meta: { title: 'formTest-1' },
         component: () => import('@/views/test/formTest-1.vue'),
+      },
+      {
+        path: '/table-form-test',
+        name: 'TableForm',
+        meta: { title: 'tableForm' },
+        component: () => import('@/views/test/tableFormTest.vue'),
       },
     ],
   },

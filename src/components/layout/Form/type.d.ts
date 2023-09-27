@@ -12,7 +12,7 @@ export interface IDate {
 export interface ISelectOptions {
   id: number | string;
   name: string;
-  disabled?: boolean;
+  disabled?: boolean | Function;
   value: string | boolean | Number | Object;
 }
 

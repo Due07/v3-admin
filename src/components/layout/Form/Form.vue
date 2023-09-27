@@ -45,7 +45,7 @@
           :placeholder="!Array.isArray(i.placeholder) ? i.placeholder : i.placeholder[0]"
           :filterable="judgmentType(i.remoteMethod, 'Function') as boolean || i.filterable"
           :remote="judgmentType(i.remoteMethod, 'Function') as boolean ?? undefined"
-          :remote-method="i.remoteMethod"
+          :remote-method="function <T>(val: T) { i.remoteMethod?.(val, column, form) }"
           v-bind="i.itemBind"
           @change="i.change"
           @visible-change="i.visibleChange"
@@ -55,7 +55,7 @@
             :key="optionsItem.id"
             :label="optionsItem.name"
             :value="optionsItem.value"
-            :disabled="optionsItem.disabled"
+            :disabled="handleFun('disabled', optionsItem, [column, optionsItem, form])"
           >
           </el-option>
         </el-select>
