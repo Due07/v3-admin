@@ -45,7 +45,7 @@
           :placeholder="!Array.isArray(i.placeholder) ? i.placeholder : i.placeholder[0]"
           :filterable="judgmentType(i.remoteMethod, 'Function') as boolean || i.filterable"
           :remote="judgmentType(i.remoteMethod, 'Function') as boolean ?? undefined"
-          :remote-method="function <T>(val: T) { i.remoteMethod?.(val, column, form) }"
+          :remote-method="<T,>(event: T) => handleFun('remoteMethod', i, [event, i, form])"
           v-bind="i.itemBind"
           @change="i.change"
           @visible-change="i.visibleChange"

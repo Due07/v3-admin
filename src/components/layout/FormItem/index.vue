@@ -43,11 +43,12 @@
       :placeholder="!Array.isArray(column.placeholder) ? column.placeholder : column.placeholder[0]"
       :filterable="judgmentType(column.remoteMethod, 'Function') as boolean || column.filterable"
       :remote="judgmentType(column.remoteMethod, 'Function') as boolean ?? undefined"
-      :remote-method="function <T>(val: T) { column.remoteMethod?.(val, column, form) }"
+      :remote-method="<T,>(event: T) => handleFun('remoteMethod', column, [event, column, form])"
       v-bind="column.itemBind"
       @change="column.change"
       @visible-change="column.visibleChange"
     >
+      <!-- /** 👆 箭头函数使用泛型eslint报错, 加上逗号让eslint识别 */ -->
       <el-option
         v-for="optionsItem in column.options"
         :key="optionsItem.id"

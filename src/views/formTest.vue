@@ -8,6 +8,7 @@
 
   <!-- :upload-url="uploadUrl" -->
   <el-button type="primary" size="default" @click="click">123</el-button>
+  <!-- 打包会有警告 原因导入的form 会被篡改 -->
   <FileUpload ref="fileUpload" v-model:form-data="form" :column="{ value: 'aa', fileType: 'image' }">
   </FileUpload>
 </template>
