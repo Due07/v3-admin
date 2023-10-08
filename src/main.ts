@@ -3,6 +3,8 @@ import App from './App.vue';
 import store from './store';
 import * as Icons from '@element-plus/icons-vue';
 
+import '@/assets/styles/index.scss';
+
 import 'tailwindcss/tailwind.css';
 import 'element-plus/dist/index.css';
 import 'dayjs/locale';

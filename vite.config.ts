@@ -84,7 +84,7 @@ export default ({ mode }) => {
         scss: {
           // http://events.jianshu.io/p/4918f8d9f2b4
           // additionalData:'@import "@/assets/style/mian.scss";'
-          additionalData: '@import "@/assets/styles/index.scss";',
+          additionalData: '@import "@/assets/styles/common.scss";',
         },
       },
       postcss: {

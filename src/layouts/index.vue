@@ -15,7 +15,11 @@
         </div>
       </el-header>
       <router-view v-slot="{ Component, route }">
-        <component :is="Component" :key="route.fullPath" />
+        <transition name="fade-transform" mode="out-in" appear>
+          <section :key="route.fullPath">
+            <component :is="Component" :key="route.fullPath" />
+          </section>
+        </transition>
       </router-view>
     </el-container>
   </el-container>

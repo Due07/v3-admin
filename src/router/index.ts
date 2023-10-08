@@ -66,6 +66,8 @@ const router = createRouter({
   // history: createWebHistory(),
   history: createWebHashHistory(),
   routes,
+  strict: false,
+  scrollBehavior: () => ({ left: 0, top: 0 }),
 });
 
 router.beforeEach((to, form, next) => {

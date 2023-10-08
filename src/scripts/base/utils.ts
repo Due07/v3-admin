@@ -1,5 +1,5 @@
 /** 工具 */
-import { isReactive } from 'vue';
+import { Ref, isReactive, isRef } from 'vue';
 import { judgmentType } from './methods';
 
 /**
@@ -31,5 +31,40 @@ export const clearReactive = <T, K>(originData: object | Array<K>, initData?: T)
       });
     }
 
+  }
+};
+
+type TDeepTarget<T> = Array<T> | string | number | boolean | Object | undefined | null | symbol | Date | RegExp;
+
+/**
+ * 深拷贝
+ * @param target 目标数据
+ * @returns {}
+ */
+export const deepCopy = <T>(targetValue: TDeepTarget<T>) => {
+  const target = isRef(targetValue) ? (targetValue as Ref<TDeepTarget<T>>).value : targetValue;
+
+  const test = /^\[object +(\S*)\]$/;
+  const regVal = Reflect.toString.call(target).replace(test, '$1');
+
+  if (['Array', 'Object'].includes(regVal)) {
+    const result = regVal === 'Object' ? {} : [];
+    Object.entries(target as object | Array<T>).forEach(([key, value]) => {
+      if (Reflect.has(target as object | Array<T>, key)) {
+        result[key] = deepCopy<typeof value>(value);
+      }
+    });
+
+    return result;
+  }
+
+  switch (regVal) {
+    case 'Date':
+      return new Date(target as Date);
+    case 'RegExp':
+      return new RegExp(target as RegExp);
+    default:
+      // string / boolean / number / undefined / null / symbol / NaN / Infinity / -Infinity
+      return target;
   }
 };

@@ -172,18 +172,14 @@
     ],
     "@typescript-eslint/explicit-member-accessibility": [
       "error",
-      {
-        "accessibility": "no-public"
-      }
+      { "accessibility": "no-public" }
     ],
     "@typescript-eslint/interface-name-prefix": 0,
     "@typescript-eslint/no-parameter-properties": 0,
     "@typescript-eslint/camelcase": ["off", { "properties": "always" }],
     "@typescript-eslint/no-empty-interface": [
       2,
-      {
-        "allowSingleExtends": true
-      }
+      { "allowSingleExtends": true }
     ] // 禁止申明空接口
   },
   "globals": {

@@ -17,7 +17,6 @@ export const useGlobalStore = defineStore({
     setColor(value: string) {
       const root = document.querySelector(':root');
       // console.log(getComputedStyle(root as Element).getPropertyValue('--el-color-primary'));
-      // --el-color-primary
       (root as HTMLElement).style.setProperty('--el-color-primary', value);
       this.COLOR = value;
     },
