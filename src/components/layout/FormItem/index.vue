@@ -97,7 +97,7 @@
   </el-form-item>
 </template>
 
-<!-- generic="T" vue = 3.3 才生效 -->
+<!-- generic="T" vue = 3 才生效 -->
 <script lang="ts" name="FormItem" setup>
 import FileUpload from '@/components/widget/FileUpload/index.vue';
 import { handleFun, judgmentType } from '@/scripts/base/methods';
