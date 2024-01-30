@@ -10,11 +10,13 @@
 <script setup lang="ts">
 import LayoutForm from '@/components/layout/Form/index.vue';
 import { formData, column } from '@/components/layout/Form/test';
+import { useReset } from '@/hooks/UseReset';
 
 import { reactive } from 'vue';
 
 const form = reactive(formData);
 
+console.log(useReset('asd'));
 </script>
 
 <style lang="scss" scoped></style>

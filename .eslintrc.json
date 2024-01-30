@@ -30,7 +30,7 @@
     "plugin:vue/vue3-recommended",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    // eslint-config-prettier 的缩写
+    // "eslint-config-prettier",
     "prettier",
     "plugin:prettier/recommended"
   ],

@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="refForm" :label-width="labelWidth" :model="form" v-bind="$attrs">
+  <Form ref="refForm" :label-width="labelWidth" :model="form" v-bind="$attrs">
     <template v-for="(iColumn, iIndex) in column" :key="iIndex">
       <FormItem v-model:form-data="form" :column="iColumn">
         <template
@@ -11,14 +11,16 @@
         </template>
       </FormItem>
     </template>
+    <slot :form="form"></slot>
 
     <el-form-item>
       <el-button type="primary" @click="onSubmit">提交</el-button>
     </el-form-item>
-  </el-form>
+  </Form>
 </template>
 
 <script lang="ts" setup>
+import Form from '@/components/layout/Form/index.vue';
 import FormItem from '@/components/layout/FormItem/index.vue';
 import { formatterData } from '@/scripts/base/methods';
 import { onMounted, ref, reactive, watch, computed } from 'vue';

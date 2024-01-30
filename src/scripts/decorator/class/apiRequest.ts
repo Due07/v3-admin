@@ -14,23 +14,23 @@
  * @returns
  */
 export function Get(object: string) {
-    // console.log(value);
-    return function <T extends { new(...args: any[]): {}}>(target: T) {
-        // console.log(target);
-        return class extends target {
-            // [value]() {
-            //     console.log(1);
-            // };
-            constructor(...args: any[]) {
-                super(args);
-                console.log(object);
-                // for (const key in object) {
-                //     if (Object.prototype.hasOwnProperty.call(object, key)) {
-                //         const element = object[key];
+  // console.log(value);
+  return function <T extends { new(...args: any[]): {} }>(target: T) {
+    // console.log(target);
+    return class extends target {
+      // [value]() {
+      //     console.log(1);
+      // };
+      constructor(...args: any[]) {
+        super(args);
+        console.log(object);
+        // for (const key in object) {
+        //     if (Object.prototype.hasOwnProperty.call(object, key)) {
+        //         const element = object[key];
 
-                //     }
-                // }
-            }
-        };
+        //     }
+        // }
+      }
     };
+  };
 };

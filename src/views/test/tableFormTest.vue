@@ -106,9 +106,11 @@ const columnList = reactive<IColumn[]>([
     name: '数量',
     value: 'num',
     type: 'text',
+    required: true,
     bind: { label: '' },
   },
 ]);
+
 </script>
 
 <style lang="scss" scoped></style>

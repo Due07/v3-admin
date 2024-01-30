@@ -19,7 +19,8 @@ export const clearReactive = <T, K>(originData: object | Array<K>, initData?: T)
     }
     // 清空数据
     if (judgmentType(originData, 'Array')) {
-      (originData as Array<K>).length = 0;
+      // (originData as K[]).length = 0;
+      (originData as K[]).splice(0, (originData as K[]).length);
     } else {
       Object.entries(originData).forEach(([key]) => (delete originData[key]));
     }

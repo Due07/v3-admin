@@ -71,11 +71,9 @@
           :format="i.format ?? dateRangeObj[i.type].format"
           :value-format="i.valueFormat ?? ''"
           :disabled-date="i.disabledDate"
-
           :range-separator="i.connect && (i.rangeSeparator ?? '至')"
-          :start-placeholder="(i.connect && Array.isArray(i.placeholder)) && i.placeholder[0] || undefined"
-          :end-placeholder="(i.connect && Array.isArray(i.placeholder)) && [...i.placeholder].pop() || undefined"
-
+          :start-placeholder="(i.connect && Array.isArray(i.placeholder) && i.placeholder[0]) || undefined"
+          :end-placeholder="(i.connect && Array.isArray(i.placeholder) && [...i.placeholder].pop()) || undefined"
           v-bind="i.itemBind"
           @change="i.change"
         >
@@ -101,7 +99,7 @@
   </el-form>
 </template>
 
-<script lang="ts"  setup>
+<script lang="ts" setup>
 import FileUpload from '@/components/widget/FileUpload/index.vue';
 import ValidatorRule, { TRulesKey, TRulesObj } from '@/scripts/helpers/validateRules';
 import { formatterData, handleFun, judgmentType } from '@/scripts/base/methods';
@@ -114,9 +112,9 @@ const refForm = ref();
 
 const prop = withDefaults(
   defineProps<{
-    labelWidth?: string,
-    formData: Record<string, any>,
-    column: IColumn[],
+    labelWidth?: string;
+    formData: Record<string, any>;
+    column: IColumn[];
   }>(),
   {
     labelWidth: '100px',
@@ -144,14 +142,10 @@ const initData = (initForm: Object, column: IColumn[]) => {
       let value = '';
       switch (cur.type) {
         case 'date':
-          value = cur.valueFormat
-            ? formatterData(initForm, cur, cur.valueFormat)
-            : formatterData(initForm, cur);
+          value = cur.valueFormat ? formatterData(initForm, cur, cur.valueFormat) : formatterData(initForm, cur);
           break;
         case 'datetime':
-          value = cur.valueFormat
-            ? formatterData(initForm, cur, cur.valueFormat)
-            : formatterData(initForm, cur);;
+          value = cur.valueFormat ? formatterData(initForm, cur, cur.valueFormat) : formatterData(initForm, cur);
           break;
         default: {
           const nullValue = { inputNumber: null, number: 0 };
@@ -170,16 +164,16 @@ const initData = (initForm: Object, column: IColumn[]) => {
 
 const fromItemRules = (item: IColumn) => {
   return [
-    {required: item.required, message: item.message, trigger: 'blur'},
+    { required: item.required, message: item.message, trigger: 'blur' },
     ...(item.rules ?? []),
     ...(judgmentType(item.ruleType, 'Object')
       ? ValidatorRule.validatorFun(item.ruleType as TRulesObj)
-      : (item.ruleType ? validatorRule.templateValidatorRule(item.ruleType as TRulesKey) : [])
-    ),
+      : item.ruleType ? validatorRule.templateValidatorRule(item.ruleType as TRulesKey) : []),
   ];
 };
 
-watch(() => (prop.formData),
+watch(
+  () => prop.formData,
   // oVal: Object | undefined
   (nVal: Object) => {
     // console.log(nVal);
@@ -217,5 +211,4 @@ defineExpose({
 });
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
