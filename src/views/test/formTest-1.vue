@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import LayoutForm from '@/components/layout/Form/index.vue';
 import { formData, column } from '@/components/layout/Form/test';
-import { useReset } from '@/hooks/UseReset';
+import { useReset } from '@/hooks/useReset';
 
 import { reactive } from 'vue';
 
