@@ -101,7 +101,7 @@
 
 <script lang="ts" setup>
 import FileUpload from '@/components/widget/FileUpload/index.vue';
-import ValidatorRule, { TRulesKey, TRulesObj } from '@/scripts/helpers/validateRules';
+import ValidatorRule, { TRulesKey, TRulesObj } from '@/scripts/helpers/ValidateRules';
 import { formatterData, handleFun, judgmentType } from '@/scripts/base/methods';
 import { onMounted, ref, reactive, watch, readonly } from 'vue';
 import { IColumn } from './type';
