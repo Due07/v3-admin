@@ -22,7 +22,7 @@ export const useReset = <T>(originData: T): [T | object, Function] => {
       weakMap.set(data as object, initData);
     }
 
-  } else { console.log('data is no Proxy'); }
+  } else { console.warn('========= data is no Proxy ========='); }
 
   /** 返回初始化数据 */
   const reset = () => weakMap.get(data as object);

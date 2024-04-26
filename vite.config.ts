@@ -37,7 +37,11 @@ export default ({ mode }) => {
       // 注入变量到 html 文件
       createHtmlPlugin({
         inject: {
-          data: { title: ENV.VITE_APP_ADMIN_NAME },
+          data: {
+            title: ENV.VITE_APP_ADMIN_NAME,
+            description: ENV.VITE_APP_DESCRIPTION,
+            keywords: ENV.VITE_APP_KEYWORDS,
+          },
         },
       }),
       vueJsx({}),

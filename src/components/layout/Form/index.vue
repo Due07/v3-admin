@@ -1,9 +1,9 @@
 <template>
-  <Form ref="refForm" :label-width="labelWidth" :model="form" v-bind="$attrs">
+  <el-form ref="refForm" :label-width="labelWidth" :model="form" v-bind="$attrs">
     <template v-for="(iColumn, iIndex) in column" :key="iIndex">
       <FormItem v-model:form-data="form" :column="iColumn">
         <template
-          v-for="(slotItem, slotIndex) in soltColumn"
+          v-for="(slotItem, slotIndex) in slotColumn"
           :key="slotIndex"
           #[slotItem.value]="{ i, form: forms }"
         >
@@ -16,11 +16,10 @@
     <el-form-item>
       <el-button type="primary" @click="onSubmit">提交</el-button>
     </el-form-item>
-  </Form>
+  </el-form>
 </template>
 
 <script lang="ts" setup>
-import Form from '@/components/layout/Form/index.vue';
 import FormItem from '@/components/layout/FormItem/index.vue';
 import { formatterData } from '@/scripts/base/methods';
 import { onMounted, ref, reactive, watch, computed } from 'vue';
@@ -37,12 +36,12 @@ const props = withDefaults(
   {
     labelWidth: '100px',
     formData: () => ({}),
-    column: undefined,
+    column: () => ([]),
   },
 );
 let form: Object = reactive({});
 
-const soltColumn = computed(() => {
+const slotColumn = computed((): IColumn[] => {
   return props.column.filter(item => (item.type === 'slot'));
 });
 
