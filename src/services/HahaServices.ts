@@ -2,9 +2,10 @@ import { Get } from '@/scripts/decorator/class/apiRequest';
 import { GetAttribute, PutAttribute } from '@/scripts/decorator/attribute/apiRequest';
 import HttpServices from './HttpServices';
 
-@Get('ga')
+@Get<typeof HahaServices>({'ga': 'HttpClient'})
 export class HahaServices extends HttpServices {
-  ga = 1;
+  ga!: (value: string) => Promise<HttpResponseType<{ value: string }>>;
+
   @GetAttribute('/asd/:id/:name')
     getHaha!: (list: Object) => Promise<HttpResponseType<{ value: string }>>;
 

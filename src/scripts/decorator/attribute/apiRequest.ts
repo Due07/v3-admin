@@ -100,8 +100,8 @@ export const PutAttribute: TAttributeFun = (
  *
  *  例2: @PutAttribute('/asd/:id', {data: (val) => ({id: val}), config: () => {}})
  *      getList!: (...args) => Promise<HttpResponseType< xxx >>;
- *      tips: data 不传递方法 则默认取 args[0]
- *            config 不传递方法 且 args长度大于2, 则默认取 args 数组的最后一位
+ *      // tips: data 不传递方法 则默认取 args[0]
+ *      //      config 不传递方法 且 args长度大于2, 则默认取 args 数组的最后一位
  * ```
  * @param {string} url 请求地址
  * @param {{data: Function, config: Function}} fun 处理函数（data / config）

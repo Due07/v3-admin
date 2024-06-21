@@ -1,3 +1,5 @@
+import HttpServices, { services } from '@/services/HttpServices';
+
 /**
  * 类的Get 装饰器
  * TODO: 未完成 待定
@@ -13,9 +15,10 @@
  * @param object 属性名称
  * @returns
  */
-export function Get(object: string) {
+export function Get<T extends { new(...args: any[]): {} }>(object: Record<string, keyof HttpServices>) {
   // console.log(value);
-  return function <T extends { new(...args: any[]): {} }>(target: T) {
+  // <T extends { new(...args: any[]): {} }>
+  return function (target: T) {
     // console.log(target);
     return class extends target {
       // [value]() {
@@ -23,13 +26,11 @@ export function Get(object: string) {
       // };
       constructor(...args: any[]) {
         super(args);
-        console.log(object);
-        // for (const key in object) {
-        //     if (Object.prototype.hasOwnProperty.call(object, key)) {
-        //         const element = object[key];
-
-        //     }
-        // }
+        Object.entries(object).forEach(([key, value]) => {
+          this[key] = function () {
+            return services[value].get('/asd');
+          };
+        });
       }
     };
   };

@@ -53,6 +53,7 @@ export default ({ mode }) => {
       // 按需加载
       autoImport({
         resolvers: [ ElementPlusResolver() ],
+        // imports: ['vue'],
       }),
       components({
         // dirs: ['src/components'], // 配置需要默认导入的自定义组件文件夹，该文件夹下的所有组件都会自动 import
@@ -68,10 +69,7 @@ export default ({ mode }) => {
       cors: true, // 默认启动，允许任何源
       // open: true, // 自动打开
       port: +ENV.VITE_APP_PORT || 5173, //启动端口
-      hmr: {
-        // host: '127.0.0.1',
-        host: ENV.VITE_APP_BASE_URL,
-      },
+      host: ENV.VITE_APP_BASE_URL,
       // 设置 https 代理
       proxy: {
         '/api': {

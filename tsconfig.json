@@ -22,7 +22,7 @@
     },
     "types": [
       "vite/client",
-      "element-plus/global"
+      "element-plus/global",
     ],
     "noEmit": true, // vue3的一些依赖包,版本过低,导致的错误升级vue版本
     "skipLibCheck": true, // Cannot find module '@babel/types' or its corresponding type declarations.

@@ -4,19 +4,6 @@ import { ROUTER_HOME } from '@/config';
 import { useGlobalStore } from '@/store/state/GLOBAL';
 
 const routes: RouteRecordRaw[] = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   meta: {
-  //     title: '首页',
-  //   },
-  //   component: () => import('@/App.vue'),
-  // },
-  // {
-  //   path: '/',
-  //   redirect: {name: ROUTER_HOME.NAME},
-  //   meta: { isHide: true },
-  // },
   {
     path: '/',
     // name: 'LAYOUT',
@@ -66,7 +53,7 @@ const router = createRouter({
   // history: createWebHistory(),
   history: createWebHashHistory(),
   routes,
-  strict: false,
+  strict: true,
   scrollBehavior: () => ({ left: 0, top: 0 }),
 });
 
