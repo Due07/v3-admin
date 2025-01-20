@@ -103,7 +103,7 @@ import FileUpload from '@/components/widget/FileUpload/index.vue';
 import { handleFun, judgmentType } from '@/scripts/base/methods';
 import { IColumn } from '../Form/type';
 import { reactive, readonly, watch } from 'vue';
-import ValidatorRule, { TRulesKey, TRulesObj } from '@/scripts/helpers/validateRules';
+import ValidatorRule, { TRulesKey, TRulesObj } from '@/scripts/helpers/ValidateRules';
 
 const validatorRule = new ValidatorRule();
 

@@ -1,3 +1,5 @@
+import { FormItemRule } from 'element-plus';
+
 /**
  * 常规表单校验规则
  */
@@ -49,7 +51,7 @@ export default class ValidatorRule<T extends string> {
    * @param format {test: '正则表达式', error: '错误文案', required: '是否必填'}
    * @returns {Array}
    */
-  static validatorFun(format: { test: RegExp, error: string, required?: Boolean }): Object[] {
+  static validatorFun(format: { test: RegExp, error: string, required?: Boolean }): FormItemRule[] {
     return [
       {
         validator: (rule: any, value: string, callback: Function) => {
@@ -59,7 +61,7 @@ export default class ValidatorRule<T extends string> {
           }
           callback();
         },
-        required: format.required ?? false,
+        required: !!format.required,
         trigger: ['blur', 'change'],
       },
     ];
