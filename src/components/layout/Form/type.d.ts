@@ -1,5 +1,5 @@
 import { TRulesKey, TRulesObj } from '@/scripts/helpers/validateRules';
-import { IColumn as IFileColumn, IFileUploadProps } from '@/components/widget/FileUpload/type';
+import type { IColumn as IFileColumn, IFileUploadProps } from '@/components/widget/FileUpload/type';
 // 时间
 export interface IDate {
   connect?: string;
@@ -7,13 +7,12 @@ export interface IDate {
   format?: string;
   valueFormat?: string;
   disabledDate?: Function;
-  placeholder?: string | string[];
 }
 
 export interface ISelectOptions {
   id: number | string;
   name: string;
-  disabled?: boolean;
+  disabled?: boolean | Function;
   value: string | boolean | Number | Object;
 }
 
@@ -31,9 +30,10 @@ export interface IColumn extends IFileColumn, IFileUploadProps, IDate {
   rules?: Object[];
   ruleType?: TRulesObj | TRulesKey,
   hide?: boolean | Function;
-  placeholder?: string;
+  // placeholder?: string;
+  placeholder?: string | string[];
   bind?: Record<string, any>;
-  slot?: string;
+  slot?: Component;
   component?: Component;
   blur?: Function;
   change?: Function;

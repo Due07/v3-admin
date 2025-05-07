@@ -1,4 +1,4 @@
-import ValidatorRule from './validateRules';
+import ValidatorRule from './ValidateRules';
 export default class ATest extends ValidatorRule<'asd'> {
   constructor() {
     super({ asd: { test: /^1[3456789]\d{9}$/i, error: '手机号格式有误' } });

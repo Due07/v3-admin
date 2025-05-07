@@ -25,9 +25,12 @@ export default class {
       baseURL: prefix,
       withCredentials: true,
       paramsSerializer: {
-        encode: (params) => {
+        serialize: (params) => {
           return stringify(params, { arrayFormat: 'repeat' });
         },
+        // encode: (params) => {
+        //   return stringify(params, { arrayFormat: 'repeat' });
+        // },
       },
       headers: {
         'X-Requested-With': 'XMLHttpRequest',

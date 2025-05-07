@@ -4,19 +4,6 @@ import { ROUTER_HOME } from '@/config';
 import { useGlobalStore } from '@/store/state/GLOBAL';
 
 const routes: RouteRecordRaw[] = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   meta: {
-  //     title: '首页',
-  //   },
-  //   component: () => import('@/App.vue'),
-  // },
-  // {
-  //   path: '/',
-  //   redirect: {name: ROUTER_HOME.NAME},
-  //   meta: { isHide: true },
-  // },
   {
     path: '/',
     // name: 'LAYOUT',
@@ -41,16 +28,22 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/views/test/index.vue'),
       },
       {
-        path: '/aaa',
-        name: 'asdhoa',
-        meta: { title: 'test1' },
-        component: () => import('@/views/test/test1.vue'),
+        path: '/form-test',
+        name: 'Form.Test',
+        meta: { title: 'formTest' },
+        component: () => import('@/views/formTest.vue'),
       },
       {
-        path: '/bbb',
-        name: 'bbb',
-        meta: { title: 'test2' },
-        component: () => import('@/views/test/test2.vue'),
+        path: '/form-test-1',
+        name: 'Form.Test-1',
+        meta: { title: 'formTest-1' },
+        component: () => import('@/views/test/formTest-1.vue'),
+      },
+      {
+        path: '/table-form-test',
+        name: 'TableForm',
+        meta: { title: 'tableForm' },
+        component: () => import('@/views/test/tableFormTest.vue'),
       },
     ],
   },
@@ -60,6 +53,8 @@ const router = createRouter({
   // history: createWebHistory(),
   history: createWebHashHistory(),
   routes,
+  strict: true,
+  scrollBehavior: () => ({ left: 0, top: 0 }),
 });
 
 router.beforeEach((to, form, next) => {

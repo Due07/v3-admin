@@ -15,10 +15,10 @@ export const useGlobalStore = defineStore({
   actions: {
     /** 全局color颜色 */
     setColor(value: string) {
-      const root = document.querySelector(':root');
+      const root = document.querySelector(':root')! as HTMLElement;
       // console.log(getComputedStyle(root as Element).getPropertyValue('--el-color-primary'));
       // --el-color-primary
-      (root as HTMLElement).style.setProperty('--el-color-primary', value);
+      root.style.setProperty('--el-color-primary', value);
       this.COLOR = value;
     },
     /** 全局Size */
